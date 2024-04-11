@@ -1,9 +1,10 @@
-using ExDyslex.Models;
+using ExDyslex.Public.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace ExDyslex.Controllers
+namespace ExDyslex.Public.Controllers
 {
+    [Area("Public")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

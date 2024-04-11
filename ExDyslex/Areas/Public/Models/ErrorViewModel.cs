@@ -1,4 +1,4 @@
-namespace ExDyslex.Models
+namespace ExDyslex.Public.Models
 {
     public class ErrorViewModel
     {
