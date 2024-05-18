@@ -1,22 +1,305 @@
-html {
-  font-size: 14px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; /* Ўирина бокового меню */
+    height: 100%;
+    background-color: #3498db;
+    color: #fff;
+    padding-top: 20px;
+    box-sizing: border-box;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+    .menu li {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* –азделительные линии между пунктами меню */
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px; /* –азмер текста ссылок */
+        display: block;
+    }
+
+        .menu a:hover {
+            background-color: #2980b9;
+        }
+
+.content {
+    margin-left: 250px; /* ќтступ контента справа, чтобы учесть ширину бокового меню */
+    padding: 20px;
+}
+
+@media (max-width: 1920px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    .content {
+        margin-left: 250px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 200px;
+    }
+
+    .menu li {
+        padding: 12px 16px;
+    }
+
+    .menu a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .content {
+        margin-left: 180px;
+    }
+
+    .menu li {
+        padding: 10px 14px;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+}
+
+.user-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.user {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.user-info {
+    color: #333;
+}
+
+    .user-info h3 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+
+    .user-info p {
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+.select-container {
+    margin-bottom: 20px;
+}
+
+.user-stats {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #3498db;
+    transition: width 0.3s ease-in-out;
+}
+
+#download-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+    #download-link img {
+        vertical-align: middle;
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
+
+
+.tasks {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
+    #task-list li {
+        margin-bottom: 10px;
+    }
+
+#add-task-form {
+    margin-top: 20px;
+}
+
+#task-name {
+    width: 200px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+
 
 body {
-  margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
 }
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.login-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #3498db;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+    .login-link:hover {
+        background-color: #e3e3e3;
+    }
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.achievements, .progress, .photos {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.achievement-icons, .photo-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+    .achievement-icons img, .photo-gallery img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+.progress-bar {
+    width: 80%;
+    max-width: 400px;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #3498db;
+}
+
+footer {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+

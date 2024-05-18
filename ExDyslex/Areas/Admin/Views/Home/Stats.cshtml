@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "Layout";
+}
+
+
+<h1>Страница Статистики</h1>
+<div class="select-container">
+    <label for="group-select">Выберите группу:</label>
+    <select id="group-select">
+        <option value="group1">Группа 1</option>
+        <option value="group2">Группа 2</option>
+        <!-- Добавьте другие группы по необходимости -->
+    </select>
+</div>
+
+<div class="select-container">
+    <label for="user-select">Выберите ученика:</label>
+    <select id="user-select">
+        <option value="man1">Иванов Иван</option>
+        <option value="man2">Успенский Дмитрий</option>
+        <option value="man3">Никифоров Семен</option>
+    </select>
+</div>
+
+<hr>
+
+<div class="user-stats">
+    <h2>Статистика Ученика</h2>
+    <p>Количество пройденных тестов: <span id="tests-completed">6</span> из 10</p>
+    <div class="progress-bar">
+        <div id="tests-progress" class="progress" style="width: 60%;"></div>
+    </div>
+    <p>Среднее время прохождения теста: <span id="average-time">8</span> минут</p>
+    <p>Тип задания, вызвавший наибольшие трудности: <span id="most-difficult-task">Ответ на вопросы по тексту</span></p>
+    <a id="download-link" href="#" download>
+        <img src="~/img/pdf-logo.png" alt="PDF Icon"> Скачать ответы в PDF
+    </a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const groupSelect = document.getElementById('group-select');
+        const userSelect = document.getElementById('user-select');
+        const testsCompleted = document.getElementById('tests-completed');
+        const testsProgress = document.getElementById('tests-progress');
+        const averageTime = document.getElementById('average-time');
+        const mostDifficultTask = document.getElementById('most-difficult-task');
+        const downloadLink = document.getElementById('download-link');
+
+        // Массив данных пользователей (здесь для примера)
+        const usersData = [
+            { id: 1, name: 'Иван Иванов', role: 'Ученик' },
+            { id: 2, name: 'Елена Петрова', role: 'Родитель' },
+            // Добавьте других пользователей с нужными данными
+        ];
+
+        // Заполнение списка пользователей при выборе группы
+        groupSelect.addEventListener('change', function () {
+            const selectedGroupId = groupSelect.value;
+            const filteredUsers = usersData.filter(user => {
+                // Здесь можно добавить фильтрацию пользователей по группе
+                return true; // Вернуть true для всех пользователей, если не делаем фильтрацию
+            });
+
+            // Очистка списка перед обновлением
+            userSelect.innerHTML = '';
+
+    // Добавление опций в список пользователей
+
+</script>
+

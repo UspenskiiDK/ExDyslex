@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "Layout";
+}
+
+
+<h1>Страница Тестов</h1>
+<div class="tasks">
+    <h2>Список Видов Заданий</h2>
+    <ul id="task-list">
+        <!-- Здесь будут динамически добавляться элементы списка через JavaScript -->
+    </ul>
+    <form id="add-task-form">
+        <h3>Добавить Новый Тип Задания</h3>
+        <input type="text" id="task-name" placeholder="Название задания" required>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const taskList = document.getElementById('task-list');
+        const addTaskForm = document.getElementById('add-task-form');
+        const taskNameInput = document.getElementById('task-name');
+
+        // Массив с начальными видами заданий (здесь для примера)
+        let tasks = ['Заплатки', 'Поиск фигуры', 'Ответы на вопросы текста'];
+
+        // Функция для отображения видов заданий
+        function renderTasks() {
+            taskList.innerHTML = '';
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.textContent = task;
+
+                // Добавляем кнопку "Удалить" для каждого элемента списка заданий
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Удалить';
+                deleteButton.classList.add('delete-button');
+                deleteButton.addEventListener('click', () => {
+                    deleteTask(index);
+                });
+                li.appendChild(deleteButton);
+
+                taskList.appendChild(li);
+            });
+        }
+
+        // Вызываем функцию при загрузке страницы
+        renderTasks();
+
+        // Обработчик события отправки формы для добавления нового задания
+        addTaskForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+            const newTaskName = taskNameInput.value.trim();
+            if (newTaskName) {
+                tasks.push(newTaskName);
+                renderTasks(); // Перерисовываем список заданий
+                taskNameInput.value = ''; // Очищаем поле ввода
+            }
+        });
+
+        // Функция для удаления задания по индексу
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            renderTasks(); // Перерисовываем список заданий после удаления
+        }
+    });
+</script>
+
+

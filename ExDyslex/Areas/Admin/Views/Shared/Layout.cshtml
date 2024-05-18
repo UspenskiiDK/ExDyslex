@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExDyslex</title>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Панель администратора</h2>
+        </div>
+        <ul class="menu">
+            <li>@Html.ActionLink("Главная", "Index", "Home", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Пользователи", "Users", "Home", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Тесты", "Tests", "Home", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Статистика", "Stats", "Home", new { area = "Admin" })</li>
+            <li><a href="settings.html">Настройки</a></li>
+            <li><a href="logout.html">Выход</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+</body>
+</html>
