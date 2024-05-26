@@ -1,3 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+<div class="container-fluid login-container">
+    <div class="row h-100">
+        <div class="col-md-6 d-flex align-items-center justify-content-center bg-white">
+            <div class="login-form">
+                <h3 class="text-center mb-4">Вход</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Логин</label>
+                        <input type="email" class="form-control" id="email" placeholder="Введите логин">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" class="form-control" id="password" placeholder="Введите пароль">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 login-image d-none d-md-block"></div>
+    </div>
+</div>
