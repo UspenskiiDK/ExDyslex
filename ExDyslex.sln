@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExDyslex", "ExDyslex\ExDysl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{6ADE85F6-DF1E-4A57-A546-FB15ACBB8A02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{38B6EC95-6967-4A87-B11C-931CDF2D677F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{6ADE85F6-DF1E-4A57-A546-FB15ACBB8A02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ADE85F6-DF1E-4A57-A546-FB15ACBB8A02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ADE85F6-DF1E-4A57-A546-FB15ACBB8A02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B6EC95-6967-4A87-B11C-931CDF2D677F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B6EC95-6967-4A87-B11C-931CDF2D677F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B6EC95-6967-4A87-B11C-931CDF2D677F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B6EC95-6967-4A87-B11C-931CDF2D677F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
