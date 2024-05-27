@@ -8,7 +8,10 @@
 }
 
 .login-image {
-    background-image: url('https://via.placeholder.com/600');
+    background-image: url('/img/login.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -16,4 +19,12 @@
     max-width: none;
     padding-left: 0;
     padding-right: 0
+}
+
+.remove-padding {
+    padding: 0 !important;
+}
+
+.pb-3 {
+    padding-bottom: 0 !important;
 }
