@@ -4,8 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExDyslex", "ExDyslex\ExDyslex.csproj", "{5F3EA4B1-16B8-499B-8119-74039BF63E83}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6ADE85F6-DF1E-4A57-A546-FB15ACBB8A02} = {6ADE85F6-DF1E-4A57-A546-FB15ACBB8A02}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{6ADE85F6-DF1E-4A57-A546-FB15ACBB8A02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{6ADE85F6-DF1E-4A57-A546-FB15ACBB8A02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
