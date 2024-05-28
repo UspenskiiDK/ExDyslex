@@ -12,6 +12,11 @@ namespace DAL.DbModels
             Database.EnsureCreated();
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=ExDyslex;Integrated security=True;TrustServerCertificate=True;");
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(user =>

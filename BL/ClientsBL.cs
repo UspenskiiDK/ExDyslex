@@ -1,11 +1,12 @@
 ﻿using DAL;
+using DAL.DbModels;
 using Entities;
+using Client = Entities.Client;
 
 namespace BL
 {
     public class ClientsBL
     {
-
         public async Task CreateClient(Client client)
         {
             await new ClientsDAL().CreateClient(client);

@@ -8,7 +8,7 @@ namespace DAL
     {
         private readonly ApplicationContext _context;
 
-        public ClientsDAL() { }
+        public ClientsDAL() { _context = new ApplicationContext(new DbContextOptions<ApplicationContext>()); }
 
         public ClientsDAL(ApplicationContext context)
         {
