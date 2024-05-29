@@ -20,11 +20,8 @@ namespace ExDyslex.Public.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Register(/*ClientModel clientModel*/)
+        public async Task<IActionResult> Register(ClientModel clientModel)
         {
-            var clientModel = new ClientModel(0, "Дмитрий", "Успенский", null,
-                new DateTime(1999, 10, 17), "+79518882988", "uspenskiidk@gmail.com", "pass", null);
-
             if (clientModel == null || !ModelState.IsValid)
                 return BadRequest();
 
@@ -45,10 +42,8 @@ namespace ExDyslex.Public.Controllers
             }
         }
 
-        public async Task<string> Login(/*string email, string password*/)
+        public async Task<string> Login(string email, string password)
         {
-            var email = "uspenskiidk@gmail.com";
-            var password = "pass";
             var client = await new ClientsBL().GetClientByEmail(email);
 
             if (client == null)
