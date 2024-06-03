@@ -13,7 +13,8 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
 {
     options.TokenValidationParameters = new()
     {
@@ -21,7 +22,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateAudience = false,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("lbvf2ghjrcbuhjr6ikyhntgbqwcvbghdk56slssdsdssnfksf343ksadfaf"))
+        IssuerSigningKey = new SymmetricSecurityKey
+        (Encoding.UTF8.GetBytes("lbvf2ghjrcbuhjr6ikyhntgbqwcvbghdk56slssdsdssnfksf343ksadfaf"))
     };
 
     options.Events = new JwtBearerEvents {
