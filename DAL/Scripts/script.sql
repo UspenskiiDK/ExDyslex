@@ -57,9 +57,8 @@ go
 
 create table TestsToClients(
 Id int not null identity constraint PK_TestsToClients primary key,
-TestId int not null constraint FK_TestsToClients_Tests foreign key references Tests(Id),
+TasksToTestId int not null constraint FK_TestsToClients_TasksToTests foreign key references TasksToTests(Id),
 ClientId int not null constraint FK_TestsToClients_Clients foreign key references Clients(Id),
-TaskId int not null constraint FK_TestsToClients_Tasks foreign key references Tasks(Id),
 Answer nvarchar(max),
 Grade int
 )

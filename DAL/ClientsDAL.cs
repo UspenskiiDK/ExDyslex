@@ -1,6 +1,7 @@
 ﻿using DAL.DbModels;
 using Microsoft.EntityFrameworkCore;
 using Client = Entities.Client;
+using Task = System.Threading.Tasks.Task;
 
 namespace DAL
 {
@@ -56,18 +57,28 @@ namespace DAL
             return ConvertToEntity(dbClient);
         }
 
-        private DbModels.Client? ConvertToDbModel(Client? entityClient)
+        public DbModels.Client? ConvertToDbModel(Client? entityClient)
         {
             return entityClient == null ? null :
-                new DbModels.Client(entityClient.Id, entityClient.FirstName, entityClient.LastName, entityClient.PatronymicName, 
-                entityClient.Birthday, entityClient.Phone, entityClient.Email, entityClient.Password, entityClient.MainPhotoPath);
+                new DbModels.Client { 
+                    Id = entityClient.Id,
+                    FirstName = entityClient.FirstName,
+                    LastName = entityClient.LastName, 
+                    PatronymicName = entityClient.PatronymicName,
+                    Birthday = entityClient.Birthday, 
+                    Phone = entityClient.Phone, 
+                    Email = entityClient.Email, 
+                    Password = entityClient.Password, 
+                    MainPhotoPath = entityClient.MainPhotoPath 
+                };
         }
 
-        private Client? ConvertToEntity(DbModels.Client? dbClient)
+        public Client? ConvertToEntity(DbModels.Client? dbClient)
         {
             return dbClient == null ? null :
                 new Client(dbClient.Id, dbClient.FirstName, dbClient.LastName, dbClient.PatronymicName,
-                dbClient.Birthday, dbClient.Phone, dbClient.Email, dbClient.Password, dbClient.MainPhotoPath);
+                dbClient.Birthday, dbClient.Phone, dbClient.Email, dbClient.Password, dbClient.MainPhotoPath, 
+                dbClient.TestsToClients.Select(item => new TestsToClientsDAL().ConvertToEntity(item)).ToList());
         }
     }
 }

@@ -11,9 +11,11 @@
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public string? MainPhotoPath { get; set; }
+        public List<TestsToClient> TestsToClients { get; set; }
 
-        public Client(int id, string firstName, string lastName, string? patronymicName, 
-            DateTime birthday, string? phone, string email, string password, string? mainPhotoPath)
+        public Client(int id, string firstName, string? lastName, string? patronymicName, 
+            DateTime birthday, string? phone, string email, string password, string? mainPhotoPath, 
+            List<TestsToClient> testsToClients)
         {
             Id = id;
             FirstName = firstName;
@@ -24,6 +26,7 @@
             Email = email;
             Password = password;
             MainPhotoPath = mainPhotoPath;
+            TestsToClients = testsToClients;
         }
     }
 }
