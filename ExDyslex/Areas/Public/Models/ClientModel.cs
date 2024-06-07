@@ -43,8 +43,7 @@ namespace ExDyslex.Areas.Public.Models
         {
             return clientModel == null ? null :
                 new Client(clientModel.Id, clientModel.FirstName, clientModel.LastName, clientModel.PatronymicName,
-                    clientModel.Birthday, clientModel.Phone, clientModel.Email, clientModel.Password, clientModel.MainPhotoPath,
-                    clientModel.TestsToClients);
+                    clientModel.Birthday, clientModel.Phone, clientModel.Email, clientModel.Password, clientModel.MainPhotoPath);
         }
     }
 }

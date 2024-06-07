@@ -7,17 +7,17 @@ namespace BL
 {
     public class TasksBL
     {
-        public async Task CreateClient(Entities.Task task)
+        public async Task CreateTask(Entities.Task task)
         {
             await new TasksDAL().CreateTask(task);
         }
 
-        public async Task UpdateClient(Entities.Task task)
+        public async Task UpdateTask(Entities.Task task)
         {
             await new TasksDAL().UpdateTask(task);
         }
 
-        public async Task DeleteClient(Entities.Task task)
+        public async Task DeleteTask(Entities.Task task)
         {
             await new TasksDAL().DeleteTask(task);
         }

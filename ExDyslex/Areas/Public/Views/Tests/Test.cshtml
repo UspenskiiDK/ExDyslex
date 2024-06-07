@@ -1,0 +1,760 @@
+﻿@using Entities
+@model Test
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+    <script src="https://unpkg.com/@@babel/standalone/babel.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<![endif]-->
+
+    <meta name="x-apple-disable-message-reformatting" />
+
+    <style>
+        .university-layout {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            min-width: 1920px;
+            padding-top: 32px;
+            padding-bottom: 137px;
+            background: white;
+        }
+
+        .content-wrapper-flex-box {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: row;
+            gap: 8px;
+            align-items: flex-start;
+            align-self: center;
+            justify-content: space-between;
+            min-width: 1751px;
+            margin-left: -57px;
+        }
+
+        .university-card {
+            flex: 0 0 auto;
+        }
+
+        .university-logo-image {
+            box-sizing: border-box;
+            display: block;
+            width: 100px;
+            max-width: initial;
+            height: 93px;
+            border: none;
+            object-fit: cover;
+        }
+
+        .university-name-text-style {
+            padding: 0;
+            margin: 0;
+            font: 400 20px/24px JejuMyeongjo;
+            color: black;
+            text-align: left;
+            letter-spacing: 0.2px;
+        }
+
+        .horizontal-flex-container {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .profile-image-container {
+            box-sizing: border-box;
+            display: block;
+            width: 69px;
+            max-width: initial;
+            height: 69px;
+            border: none;
+            object-fit: cover;
+        }
+
+        .royal-scripture {
+            flex: 0 0 auto;
+            padding: 0;
+            margin: 0;
+            margin-left: 13px;
+            font: 400 32px JejuMyeongjo;
+            color: #9ca3e0;
+            letter-spacing: 0.32px;
+        }
+
+        .test-interface-container {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            padding-right: 56px;
+            padding-left: 56px;
+            margin-top: 53px;
+        }
+
+        .quiz-status-text-style {
+            flex: 0 0 auto;
+            padding: 0;
+            margin: 0;
+            font: 400 32px JejuMyeongjo;
+            color: black;
+            letter-spacing: 0.32px;
+        }
+
+        .test-container {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            margin-top: 61px;
+        }
+
+        .vertical-centered-column-container {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .quiz-question-container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+
+        .question-counter {
+            flex: 0 0 auto;
+            align-self: center;
+            padding: 0;
+            margin: 0;
+            margin-left: -16px;
+            font: 400 32px JejuMyeongjo;
+            color: black;
+            letter-spacing: 0.32px;
+        }
+
+        .korean-large-text {
+            flex: 0 0 auto;
+            padding: 0;
+            margin: 0;
+            font: 400 64px JejuMyeongjo;
+            color: black;
+            letter-spacing: 0.64px;
+        }
+
+        .letter-block-with-text {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            min-width: 242px;
+            padding-right: 598px;
+            padding-left: 598px;
+            margin-top: -19px;
+        }
+
+        .majestic-letter {
+            padding: 0;
+            margin: 0;
+            font: 400 256px JejuMyeongjo;
+            color: black;
+            letter-spacing: 2.56px;
+        }
+
+        .large-korean-letter {
+            padding: 0;
+            padding-left: 66px;
+            margin: 0;
+            margin-top: -250px;
+            font: 400 256px JejuMyeongjo;
+            color: black;
+            letter-spacing: 2.56px;
+        }
+
+        .content-grid {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: row;
+            gap: 8px;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding-right: 96px;
+            padding-left: 96px;
+        }
+
+        .vertical-text-container {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .svg-container {
+            display: flex;
+            flex: 0 0 auto;
+            width: 24px;
+            height: 24px;
+        }
+
+        .text-container1 {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            width: 364px;
+            margin-left: 19.5px;
+        }
+
+        .korean-calligraphy-heading {
+            flex: 0 0 auto;
+            align-self: center;
+            padding: 0;
+            margin: 0;
+            margin-left: -27.5px;
+            font: 400 64px JejuMyeongjo;
+            color: white;
+            letter-spacing: 0.64px;
+        }
+
+        .card-with-text {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            height: 72px;
+            margin-top: -57px;
+            background: #727cd6;
+            border-radius: 10px;
+        }
+
+        .header-section1 {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 60px;
+        }
+
+        .icon-with-text {
+            box-sizing: border-box;
+            display: block;
+            width: 23px;
+            max-width: initial;
+            height: 23px;
+        }
+
+        .center-aligned-text-container {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            width: 364px;
+            margin-left: 20px;
+        }
+
+        .korean-poetry-style {
+            flex: 0 0 auto;
+            align-self: center;
+            padding: 0;
+            margin: 0;
+            margin-left: -45px;
+            font: 400 64px JejuMyeongjo;
+            color: white;
+            letter-spacing: 0.64px;
+        }
+
+        .nested-content-group {
+            flex: 0 0 auto;
+            padding-bottom: 8px;
+        }
+
+        .horizontal-flex-container-with-text {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .korean-text-heading1 {
+            flex: 0 0 auto;
+            align-self: center;
+            padding: 0;
+            margin: 0;
+            margin-left: -31px;
+            font: 400 64px JejuMyeongjo;
+            color: white;
+            letter-spacing: 0.64px;
+        }
+
+        .header-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 52px;
+        }
+
+        .text-container {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            width: 364px;
+            margin-left: 19.5px;
+        }
+
+        .korean-text-heading {
+            flex: 0 0 auto;
+            align-self: center;
+            padding: 0;
+            margin: 0;
+            margin-left: -48px;
+            font: 400 64px JejuMyeongjo;
+            color: white;
+            letter-spacing: 0.64px;
+        }
+
+        .quiz-summary-container {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 3.75px;
+            margin-top: 450px;
+        }
+
+        .question-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .main-heading-text-style {
+            flex: 0 0 auto;
+            align-self: center;
+            padding: 0;
+            margin: 0;
+            margin-top: 83px;
+            font: 400 64px JejuMyeongjo;
+            color: black;
+            letter-spacing: 0.64px;
+        }
+
+        .content-wrapper1 {
+            flex: 0 0 auto;
+            padding-left: 3px;
+            margin-top: 211px;
+        }
+
+        .rounded-purple-box-with-padding {
+            box-sizing: border-box;
+            width: 100%;
+            padding-right: 48px;
+            padding-left: 100px;
+            background: #727cd6;
+            border-radius: 30px;
+        }
+
+        .vertical-centered-column-with-thin-width {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            width: 2px;
+            height: 88px;
+        }
+
+        .vertical-divider {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            height: 56px;
+            border-left: 2px solid white;
+        }
+
+        .quiz-container1 {
+            flex: 0 0 auto;
+            align-self: center;
+            padding-right: 324px;
+            padding-left: 324px;
+            margin-top: 521px;
+        }
+
+        .quiz-heading {
+            flex: 0 0 auto;
+            padding: 0;
+            margin: 0;
+            margin-left: -147px;
+            font: 400 32px JejuMyeongjo;
+            color: black;
+            letter-spacing: 0.32px;
+        }
+
+        .quiz-container {
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-right: 242px;
+            margin-top: 29px;
+        }
+
+        .image-gallery-container1 {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            gap: 60px;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .vertical-padding-container1 {
+            flex: 0 0 auto;
+            padding-bottom: 10px;
+        }
+
+        .red-box-square {
+            box-sizing: border-box;
+            width: 77px;
+            height: 77px;
+            background: red;
+        }
+
+        .image-grid-cell {
+            box-sizing: border-box;
+            display: block;
+            width: 77px;
+            max-width: initial;
+            height: 77px;
+        }
+
+        .parent-flex-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+
+        .vertical-padding-container {
+            flex: 0 0 auto;
+            padding-bottom: 9px;
+        }
+
+        .royal-box {
+            box-sizing: border-box;
+            width: 77px;
+            height: 77px;
+            background: #3d39f3;
+        }
+
+        .image-container {
+            box-sizing: border-box;
+            display: block;
+            width: 77px;
+            max-width: initial;
+            height: 77px;
+            margin-left: 197px;
+        }
+
+        .image-gallery-container {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            gap: 60px;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 11px;
+        }
+
+        .vertical-padding-container2 {
+            flex: 0 0 auto;
+            padding-bottom: 15px;
+        }
+
+        .green-box {
+            box-sizing: border-box;
+            width: 77px;
+            height: 77px;
+            background: #499c22;
+        }
+
+        .center-aligned-flex-container {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 31px;
+        }
+
+        .horizontal-flex-container1 {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            min-width: 1019px;
+            margin-left: -213px;
+        }
+
+        .vertical-margin-top-51px {
+            margin-top: 51px;
+        }
+
+        .horizontal-flex-container1:first-child {
+            margin-top: 0px;
+        }
+
+        .svg-container1 {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            width: 6.92%;
+            height: 24px;
+        }
+
+        .content-wrapper {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            width: 75.7%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .vertical-centered-container {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 5.2%;
+        }
+
+        .svg-container2 {
+            display: flex;
+            width: 24px;
+            height: 24px;
+        }
+
+        .vertical-aligned-image-container {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-start;
+            width: 12.17%;
+        }
+
+        .finish-test-button {
+            box-sizing: border-box;
+            display: block;
+            flex: 0 0 auto;
+            align-self: center;
+            width: 617px;
+            min-width: 617px;
+            height: 88px;
+            margin-top: 643px;
+            font: 400 64px JejuMyeongjo;
+            color: white;
+            letter-spacing: 0.64px;
+            cursor: pointer;
+            background: #727cd6;
+            border: none;
+            border-radius: 30px;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div style="display: inline-block; width: 1920px" data-ignore="used only for top most containter width">
+        <div class="university-layout">
+            <div class="content-wrapper-flex-box">
+                <div class="university-card">
+                    <img src="/img/img_43_3_16d319.jpeg" class="university-logo-image" />
+                    <p class="university-name-text-style">САРАТОВСКИЙ НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ<br />ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ ИМЕНИ Н. Г. ЧЕРНЫШЕВСКОГО</p>
+                </div>
+                <div class="action-panel">
+                    <!-- PLACEHOLDER - Button Component detected here. Go to "React Code" via right click menu to see code generated -->
+                    <div class="main-navigation-container">
+                        <p class="main-link-text-style">Каталог тестов</p>
+                    </div>
+                </div>
+                <div class="horizontal-flex-container">
+                    <img src="/img/img_43_7_358d0e.png" class="profile-image-container" />
+                    <p class="royal-scripture">Дмитрий</p>
+                </div>
+            </div>
+            <div class="test-interface-container">
+                <p class="quiz-status-text-style">Текущий тест: Тест 1</p>
+                <div class="test-container">
+                    <div class="vertical-centered-column-container">
+                        <div class="quiz-question-container">
+                            <p class="question-counter">Вопрос: 1 из 10</p>
+                            <div class="vertical-centered-column-container">
+                                <p class="korean-large-text">Какие две буквы изображены на картинке?</p>
+                                <div class="letter-block-with-text">
+                                    <p class="majestic-letter">Б</p>
+                                    <p class="large-korean-letter">Е</p>
+                                </div>
+                            </div>
+                            <div class="content-grid">
+                                <div class="vertical-text-container">
+                                    <div class="horizontal-flex-container">
+                                        <div class="svg-container">
+                                            <svg viewBox="0 0 24 24" x="0" y="0" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 1" data-node-id="43:20" cx="12" cy="12" r="11" stroke="black" xmlns="http://www.w3.org/2000/svg" /></svg>
+                                        </div>
+                                        <div class="text-container1">
+                                            <p class="korean-calligraphy-heading">В и Ш</p>
+                                            <div class="card-with-text"></div>
+                                        </div>
+                                    </div>
+                                    <div class="header-section1">
+                                        <img src="/img/img_59830166_fef489.svg" class="icon-with-text" />
+                                        <div class="center-aligned-text-container">
+                                            <p class="korean-poetry-style">Б и Е</p>
+                                            <div class="card-with-text"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nested-content-group">
+                                    <div class="horizontal-flex-container-with-text">
+                                        <div class="svg-container">
+                                            <svg viewBox="0 0 24 24" x="0" y="0" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 3" data-node-id="43:23" cx="12" cy="12" r="11" stroke="black" xmlns="http://www.w3.org/2000/svg" /></svg>
+                                        </div>
+                                        <div class="text-container1">
+                                            <p class="korean-text-heading1">Ь и Ш</p>
+                                            <div class="card-with-text"></div>
+                                        </div>
+                                    </div>
+                                    <div class="header-section">
+                                        <div class="svg-container">
+                                            <svg viewBox="0 0 24 24" x="0" y="0" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 4" data-node-id="43:24" cx="12" cy="12" r="11" stroke="black" xmlns="http://www.w3.org/2000/svg" /></svg>
+                                        </div>
+                                        <div class="text-container">
+                                            <p class="korean-text-heading">Г и Ё</p>
+                                            <div class="card-with-text"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quiz-summary-container">
+                        <div class="question-container">
+                            <p class="quiz-status-text-style">Вопрос: 2 из 10</p>
+                            <p class="korean-large-text">Напиши ответ на вопрос</p>
+                        </div>
+                    </div>
+                    <p class="main-heading-text-style">Футбол, прыжки в высоту, теннис, плавание - это ...</p>
+                    <div class="content-wrapper1">
+                        <div class="rounded-purple-box-with-padding">
+                            <div class="vertical-centered-column-with-thin-width">
+                                <div class="vertical-divider"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quiz-container1">
+                        <div class="quiz-question-container">
+                            <div class="vertical-centered-column-container">
+                                <p class="quiz-heading">Вопрос: 3 из 10</p>
+                                <p class="korean-large-text">Выбери нужную фигуру на место пропуска</p>
+                            </div>
+                            <div class="quiz-container">
+                                <div>
+                                    <div class="image-gallery-container1">
+                                        <div class="vertical-padding-container1">
+                                            <div class="red-box-square"></div>
+                                        </div>
+                                        <img src="/img/img_43_59_61235f.svg" class="image-grid-cell" />
+                                        <img src="/img/img_43_63_1494f1.svg" class="image-grid-cell" />
+                                    </div>
+                                    <div class="parent-flex-container">
+                                        <div class="vertical-padding-container">
+                                            <div class="royal-box"></div>
+                                        </div>
+                                        <img src="/img/img_43_66_118555.svg" class="image-container" />
+                                    </div>
+                                    <div class="image-gallery-container">
+                                        <div class="vertical-padding-container2">
+                                            <div class="green-box"></div>
+                                        </div>
+                                        <img src="/img/img_43_60_5e01b8.svg" class="image-grid-cell" />
+                                        <img src="/img/img_43_64_87b891.svg" class="image-grid-cell" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center-aligned-flex-container">
+                            <!-- Repeated elements detected. These are rendered using loops & conditions in the React tab -->
+                            <div class="horizontal-flex-container1 vertical-margin-top-51px horizontal-flex-container1:first-child">
+                                <div class="svg-container1">
+                                    <svg viewBox="0 0 24 24" x="0" y="0" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 1_2" data-node-id="43:50" cx="12" cy="12" r="11" stroke="black" xmlns="http://www.w3.org/2000/svg" /></svg>
+                                </div>
+                                <div class="content-wrapper">
+                                    <div class="green-box"></div>
+                                </div>
+                                <div class="vertical-centered-container">
+                                    <img class="icon-with-text" src="/img/img_aa26765b_cd389d.svg" />
+                                </div>
+                                <div class="vertical-aligned-image-container">
+                                    <img class="image-grid-cell" src="/img/img_43_61_a7c877.svg" />
+                                </div>
+                            </div>
+                            <div class="horizontal-flex-container1 vertical-margin-top-51px">
+                                <div class="svg-container1">
+                                    <svg viewBox="0 0 24 24" x="0" y="0" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 3_2" data-node-id="43:53" cx="12" cy="12" r="11" stroke="black" xmlns="http://www.w3.org/2000/svg" /></svg>
+                                </div>
+                                <div class="content-wrapper">
+                                    <img class="image-grid-cell" src="/img/img_43_62_283940.svg" />
+                                </div>
+                                <div class="vertical-centered-container">
+                                    <div class="svg-container2">
+                                        <svg viewBox="0 0 24 24" x="0" y="0" fill="none" xmlns="http://www.w3.org/2000/svg"><circle id="Ellipse 4_2" data-node-id="43:54" cx="12" cy="12" r="11" stroke="black" xmlns="http://www.w3.org/2000/svg" /></svg>
+                                    </div>
+                                </div>
+                                <div class="vertical-aligned-image-container">
+                                    <img class="image-grid-cell" src="/img/img_43_65_61740a.svg" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PLACEHOLDER - Button Component detected here. Go to "React Code" via right click menu to see code generated -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

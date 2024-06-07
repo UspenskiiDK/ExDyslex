@@ -1,0 +1,286 @@
+﻿@using Entities
+@model List<Test>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<script src="https://unpkg.com/@@babel/standalone/babel.min.js"></script>
+
+
+
+<style>
+    .university-hero-section {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        min-width: 1920px;
+        padding: 32px 56px 138px;
+        background: white;
+    }
+
+    .university-info-container {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
+
+    .university-info-card {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        width: 47.68%;
+        padding-bottom: 6px;
+    }
+
+    .university-logo {
+        box-sizing: border-box;
+        display: block;
+        width: 100px;
+        max-width: initial;
+        height: 93px;
+        border: none;
+        object-fit: cover;
+    }
+
+    .university-name-text-style {
+        padding: 0;
+        margin: 0;
+        font: 400 20px/24px JejuMyeongjo;
+        color: black;
+        text-align: left;
+        letter-spacing: 0.2px;
+    }
+
+    .action-panel {
+        box-sizing: border-box;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: flex-start;
+        width: 35.4%;
+        height: 147px;
+        padding-top: 111px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .select-test-button {
+        box-sizing: border-box;
+        display: block;
+        flex: 0 0 auto;
+        width: 182px;
+        min-width: 182px;
+        height: 36px;
+        font: 400 16px JejuMyeongjo;
+        color: white;
+        letter-spacing: 0.16px;
+        cursor: pointer;
+        background: #c1c3d7;
+        border: none;
+        border-radius: 30px;
+    }
+
+    .main-navigation-container {
+        box-sizing: border-box;
+        display: flex;
+        max-width: 400px;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 40px;
+        padding-left: 40px;
+        margin-left: 32px;
+        background: #727cd6;
+        border-radius: 30px;
+    }
+
+    .main-link-text-style {
+        width:auto;
+        max-width: 100px;
+        padding: 0;
+        margin: 0;
+        font: 400 16px JejuMyeongjo;
+        color: white;
+        letter-spacing: 0.16px;
+    }
+
+    .profile-card {
+        box-sizing: border-box;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 16.92%;
+        padding: 66px 15px 12px;
+    }
+
+    .profile-image-container {
+        box-sizing: border-box;
+        display: block;
+        width: 69px;
+        max-width: initial;
+        height: 69px;
+        border: none;
+        object-fit: cover;
+    }
+
+    .majestic-text {
+        flex: 0 0 auto;
+        padding: 0;
+        margin: 0;
+        margin-left: 13px;
+        font: 400 32px JejuMyeongjo;
+        color: #9ca3e0;
+        letter-spacing: 0.32px;
+    }
+
+    .test-selector-container1 {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 84px;
+    }
+
+    .test-selector-container {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        min-width: 1478px;
+    }
+
+    .main-heading-text-style {
+        flex: 0 0 auto;
+        align-self: center;
+        padding: 0;
+        margin: 0;
+        margin-left: -26.5px;
+        font: 400 40px JejuMyeongjo;
+        color: black;
+        letter-spacing: 0.4px;
+    }
+
+    .test-selector-container2 {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: row;
+        gap: 130px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 104px;
+    }
+
+    .vertical-flex-container {
+        box-sizing: border-box;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        width: 406px;
+    }
+
+    .vertical-centered-text-container {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+    }
+
+    .image-container-with-title {
+        box-sizing: border-box;
+        display: block;
+        flex: 0 0 auto;
+        max-width: initial;
+        height: 177px;
+        border: 5px solid #727cd6;
+        border-radius: 17px;
+        object-fit: cover;
+    }
+
+    .majestic-heading {
+        flex: 0 0 auto;
+        align-self: center;
+        padding: 0;
+        margin: 0;
+        margin-top: 10px;
+        margin-left: -44px;
+        font: 400 36px JejuMyeongjo;
+        color: black;
+        letter-spacing: 0.36px;
+    }
+
+    .vertical-centered-content {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        margin-top: 67px;
+    }
+
+    .korean-poetry-style {
+        flex: 0 0 auto;
+        align-self: center;
+        padding: 0;
+        margin: 0;
+        margin-top: 10px;
+        margin-left: -42px;
+        font: 400 36px JejuMyeongjo;
+        color: black;
+        letter-spacing: 0.36px;
+    }
+</style>
+
+<div style="display: inline-block; width: 1920px" data-ignore="used only for top most containter width">
+    <div class="university-hero-section">
+        <div class="university-info-container">
+            <div class="university-info-card">
+                <img src="/img/img_20_525_b796ab.jpeg" class="university-logo" />
+                <p class="university-name-text-style">САРАТОВСКИЙ НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ<br />ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ ИМЕНИ Н. Г. ЧЕРНЫШЕВСКОГО</p>
+            </div>
+            <div class="action-panel">
+                <!-- PLACEHOLDER - Button Component detected here. Go to "React Code" via right click menu to see code generated -->
+                <div class="main-navigation-container">
+                    <p class="main-link-text-style">На главную</p>
+                </div>
+            </div>
+            <div class="profile-card">
+                <img src="/img/img_20_529_5c8fe3.png" class="profile-image-container" />
+                <p class="majestic-text">Дмитрий</p>
+            </div>
+        </div>
+        <div class="test-selector-container1">
+            <div class="test-selector-container">
+                <p class="main-heading-text-style">Выбери тест из списка ниже</p>
+                <div class="test-selector-container2">
+                    
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            foreach(var test in Model)
+                            {
+                                <div class="vertical-flex-container">
+                                    <div class="vertical-centered-text-container">
+                                        <a href="#">
+                                            <img src="@test.ImagePath" class="image-container-with-title" />
+                                        </a>
+                                        <p class="majestic-heading">@test.Name</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

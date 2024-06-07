@@ -77,8 +77,7 @@ namespace DAL
         {
             return dbClient == null ? null :
                 new Client(dbClient.Id, dbClient.FirstName, dbClient.LastName, dbClient.PatronymicName,
-                dbClient.Birthday, dbClient.Phone, dbClient.Email, dbClient.Password, dbClient.MainPhotoPath, 
-                dbClient.TestsToClients.Select(item => new TestsToClientsDAL().ConvertToEntity(item)).ToList());
+                dbClient.Birthday, dbClient.Phone, dbClient.Email, dbClient.Password, dbClient.MainPhotoPath);
         }
     }
 }

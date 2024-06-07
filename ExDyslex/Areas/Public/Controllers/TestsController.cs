@@ -1,3 +1,4 @@
+using BL;
 using ExDyslex.Public.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -6,25 +7,25 @@ using System.Diagnostics;
 namespace ExDyslex.Public.Controllers
 {
     [Area("Public")]
-    public class HomeController : Controller
+    //[Authorize]
+    public class TestsController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public TestsController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            if (HttpContext.Request.Cookies["efrD"] != null)
-            {
-                return RedirectToAction("Index", "Tests");
-            }
-            else
-            {
-                return View();
-            }
+            var tests = new TestsBL().GetAllTests();
+            return View(tests);
+        }
+
+        public IActionResult Test()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

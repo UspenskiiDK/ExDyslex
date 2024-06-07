@@ -70,24 +70,24 @@ namespace DAL.DbModels
                 .WithMany(c => c.TasksToTests)
                 .HasForeignKey(bc => bc.TestId);
 
-            modelBuilder.Entity<TestsToClient>(ttc =>
-            {
-                ttc.Property(ttc => ttc.TasksToTestId).IsRequired();
-                ttc.Property(ttc => ttc.ClientId).IsRequired();
-            });
+        //    modelBuilder.Entity<TestsToClient>(ttc =>
+        //    {
+        //        ttc.Property(ttc => ttc.TasksToTestId).IsRequired();
+        //        ttc.Property(ttc => ttc.ClientId).IsRequired();
+        //    });
 
-            modelBuilder.Entity<TestsToClient>()
-                .HasKey(ttc => new { ttc.ClientId, ttc.TasksToTestId });
+        //    modelBuilder.Entity<TestsToClient>()
+        //        .HasKey(ttc => new { ttc.ClientId, ttc.TasksToTestId });
 
-            modelBuilder.Entity<TestsToClient>()
-                .HasOne(t => t.Client)
-                .WithMany(te => te.TestsToClients)
-                .HasForeignKey(bc => bc.ClientId);
+        //    modelBuilder.Entity<TestsToClient>()
+        //        .HasOne(t => t.Client)
+        //        .WithMany(te => te.TestsToClients)
+        //        .HasForeignKey(bc => bc.ClientId);
 
-            modelBuilder.Entity<TestsToClient>()
-                .HasOne(tt => tt.TasksToTest)
-                .WithMany(c => c.TestsToClients)
-                .HasForeignKey(bc => bc.TasksToTestId);
+        //    modelBuilder.Entity<TestsToClient>()
+        //        .HasOne(tt => tt.TasksToTest)
+        //        .WithMany(c => c.TestsToClients)
+        //        .HasForeignKey(bc => bc.TasksToTestId);
         }
     }
 }
