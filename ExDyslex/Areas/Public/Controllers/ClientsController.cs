@@ -68,6 +68,11 @@ namespace ExDyslex.Public.Controllers
             return RedirectToAction("Index", "Tests");
         }
 
+        public IActionResult PersonalCabinet()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
