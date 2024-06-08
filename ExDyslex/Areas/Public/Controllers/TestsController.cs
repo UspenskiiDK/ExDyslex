@@ -19,8 +19,8 @@ namespace ExDyslex.Public.Controllers
 
         public IActionResult Index()
         {
-            var tests = new TestsBL().GetAllTests();
-            return View(tests);
+            //var tests = new TestsBL().GetAllTests();
+            return View();
         }
 
         public IActionResult Test()

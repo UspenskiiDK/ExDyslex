@@ -1,286 +1,145 @@
-﻿@using Entities
-@model List<Test>
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    ViewData["Title"] = "Каталог тестов";
 }
 
-
-<script src="https://unpkg.com/@@babel/standalone/babel.min.js"></script>
-
-
-
 <style>
-    .university-hero-section {
-        box-sizing: border-box;
+    .bs-icon {
+        --bs-icon-size: .75rem;
         display: flex;
-        flex-direction: column;
-        align-items: stretch;
+        flex-shrink: 0;
         justify-content: center;
-        min-width: 1920px;
-        padding: 32px 56px 138px;
-        background: white;
-    }
-
-    .university-info-container {
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: row;
-        align-items: stretch;
-        justify-content: flex-start;
-    }
-
-    .university-info-card {
-        box-sizing: border-box;
-        flex: 0 0 auto;
-        width: 47.68%;
-        padding-bottom: 6px;
-    }
-
-    .university-logo {
-        box-sizing: border-box;
-        display: block;
-        width: 100px;
-        max-width: initial;
-        height: 93px;
-        border: none;
-        object-fit: cover;
-    }
-
-    .university-name-text-style {
-        padding: 0;
-        margin: 0;
-        font: 400 20px/24px JejuMyeongjo;
-        color: black;
-        text-align: left;
-        letter-spacing: 0.2px;
-    }
-
-    .action-panel {
-        box-sizing: border-box;
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: row;
-        align-items: stretch;
-        justify-content: flex-start;
-        width: 35.4%;
-        height: 147px;
-        padding-top: 111px;
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-
-    .select-test-button {
-        box-sizing: border-box;
-        display: block;
-        flex: 0 0 auto;
-        width: 182px;
-        min-width: 182px;
-        height: 36px;
-        font: 400 16px JejuMyeongjo;
-        color: white;
-        letter-spacing: 0.16px;
-        cursor: pointer;
-        background: #c1c3d7;
-        border: none;
-        border-radius: 30px;
-    }
-
-    .main-navigation-container {
-        box-sizing: border-box;
-        display: flex;
-        max-width: 400px;
-        flex-direction: column;
-        justify-content: center;
-        padding-right: 40px;
-        padding-left: 40px;
-        margin-left: 32px;
-        background: #727cd6;
-        border-radius: 30px;
-    }
-
-    .main-link-text-style {
-        width:auto;
-        max-width: 100px;
-        padding: 0;
-        margin: 0;
-        font: 400 16px JejuMyeongjo;
-        color: white;
-        letter-spacing: 0.16px;
-    }
-
-    .profile-card {
-        box-sizing: border-box;
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: row;
         align-items: center;
-        justify-content: flex-start;
-        width: 16.92%;
-        padding: 66px 15px 12px;
+        font-size: var(--bs-icon-size);
+        width: calc(var(--bs-icon-size) * 2);
+        height: calc(var(--bs-icon-size) * 2);
+        color: var(--bs-primary);
     }
 
-    .profile-image-container {
-        box-sizing: border-box;
-        display: block;
-        width: 69px;
-        max-width: initial;
-        height: 69px;
-        border: none;
-        object-fit: cover;
+    .bs-icon-xs {
+        --bs-icon-size: 1rem;
+        width: calc(var(--bs-icon-size) * 1.5);
+        height: calc(var(--bs-icon-size) * 1.5);
     }
 
-    .majestic-text {
-        flex: 0 0 auto;
-        padding: 0;
-        margin: 0;
-        margin-left: 13px;
-        font: 400 32px JejuMyeongjo;
-        color: #9ca3e0;
-        letter-spacing: 0.32px;
+    .bs-icon-sm {
+        --bs-icon-size: 1rem;
     }
 
-    .test-selector-container1 {
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        margin-top: 84px;
+    .bs-icon-md {
+        --bs-icon-size: 1.5rem;
     }
 
-    .test-selector-container {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        min-width: 1478px;
+    .bs-icon-lg {
+        --bs-icon-size: 2rem;
     }
 
-    .main-heading-text-style {
-        flex: 0 0 auto;
-        align-self: center;
-        padding: 0;
-        margin: 0;
-        margin-left: -26.5px;
-        font: 400 40px JejuMyeongjo;
-        color: black;
-        letter-spacing: 0.4px;
+    .bs-icon-xl {
+        --bs-icon-size: 2.5rem;
     }
 
-    .test-selector-container2 {
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: row;
-        gap: 130px;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 104px;
+    .bs-icon.bs-icon-primary {
+        color: var(--bs-white);
+        background: var(--bs-primary);
     }
 
-    .vertical-flex-container {
-        box-sizing: border-box;
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: center;
-        width: 406px;
+    .bs-icon.bs-icon-primary-light {
+        color: var(--bs-primary);
+        background: rgba(var(--bs-primary-rgb), .2);
     }
 
-    .vertical-centered-text-container {
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: center;
+    .bs-icon.bs-icon-semi-white {
+        color: var(--bs-primary);
+        background: rgba(255, 255, 255, .5);
     }
 
-    .image-container-with-title {
-        box-sizing: border-box;
-        display: block;
-        flex: 0 0 auto;
-        max-width: initial;
-        height: 177px;
-        border: 5px solid #727cd6;
-        border-radius: 17px;
-        object-fit: cover;
+    .bs-icon.bs-icon-rounded {
+        border-radius: .5rem;
     }
 
-    .majestic-heading {
-        flex: 0 0 auto;
-        align-self: center;
-        padding: 0;
-        margin: 0;
-        margin-top: 10px;
-        margin-left: -44px;
-        font: 400 36px JejuMyeongjo;
-        color: black;
-        letter-spacing: 0.36px;
+    .bs-icon.bs-icon-circle {
+        border-radius: 50%;
     }
 
-    .vertical-centered-content {
-        display: flex;
-        flex: 0 0 auto;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: center;
-        margin-top: 67px;
-    }
-
-    .korean-poetry-style {
-        flex: 0 0 auto;
-        align-self: center;
-        padding: 0;
-        margin: 0;
-        margin-top: 10px;
-        margin-left: -42px;
-        font: 400 36px JejuMyeongjo;
-        color: black;
-        letter-spacing: 0.36px;
-    }
 </style>
 
-<div style="display: inline-block; width: 1920px" data-ignore="used only for top most containter width">
-    <div class="university-hero-section">
-        <div class="university-info-container">
-            <div class="university-info-card">
-                <img src="/img/img_20_525_b796ab.jpeg" class="university-logo" />
-                <p class="university-name-text-style">САРАТОВСКИЙ НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ<br />ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ ИМЕНИ Н. Г. ЧЕРНЫШЕВСКОГО</p>
-            </div>
-            <div class="action-panel">
-                <!-- PLACEHOLDER - Button Component detected here. Go to "React Code" via right click menu to see code generated -->
-                <div class="main-navigation-container">
-                    <p class="main-link-text-style">На главную</p>
+
+<div class="row">
+    <div class="col">
+        <img src="/img/Logo_SGU.jpg" width="106" height="98" style="margin-top: 20px;margin-left: 50px;margin-bottom: 0px;display: inline;">
+        <p style="margin-left: 50px;">САРАТОВСКИЙ НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ<br>ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ ИМЕНИ Н.&nbsp;Г.&nbsp;ЧЕРНЫШЕВСКОГО<br></p>
+    </div>
+    <div class="col" style="margin-top: 0px;margin-left: 800px;">
+        <img src="/img/photo_2024-01-12_21-36-53.jpg" width="106" height="141" style="border-radius: 50%;width: 100px;height: 100px;margin-top: 20px;margin-left: 803px;margin-right: 50px;">
+        <p class="fs-2 fw-normal" style="/*display: inline;*/padding-top: 0px;margin-bottom: 0px;margin-top: 0px;margin-left: 791px;margin-right: 50px;color: #9CA3E0;">Дмитрий</p>
+    </div>
+</div>
+<hr style="color: var(--bs-link-hover-color);/*height: 5px;*/border-top: 2px solid;opacity: 1;">
+<h1 style="margin-left: 1200px;margin-top: 56px;">Выбери тест из списка ниже</h1>
+<div class="container" style="margin-left: 150px;margin-right: 2000px;">
+    <div class="row">
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="card" style="width: 700px;">
+                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
+                <div class="card-img-overlay">
+                    <h4 style="margin-top: 300px;">Тест 1</h4>
                 </div>
             </div>
-            <div class="profile-card">
-                <img src="/img/img_20_529_5c8fe3.png" class="profile-image-container" />
-                <p class="majestic-text">Дмитрий</p>
+        </div>
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="card" style="width: 700px;">
+                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
+                <div class="card-img-overlay">
+                    <h4 style="margin-top: 300px;">Тест 2</h4>
+                </div>
             </div>
         </div>
-        <div class="test-selector-container1">
-            <div class="test-selector-container">
-                <p class="main-heading-text-style">Выбери тест из списка ниже</p>
-                <div class="test-selector-container2">
-                    
-                        @if (Model != null && Model.Count > 0)
-                        {
-                            foreach(var test in Model)
-                            {
-                                <div class="vertical-flex-container">
-                                    <div class="vertical-centered-text-container">
-                                        <a href="#">
-                                            <img src="@test.ImagePath" class="image-container-with-title" />
-                                        </a>
-                                        <p class="majestic-heading">@test.Name</p>
-                                    </div>
-                                </div>
-                            }
-                        }
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="card" style="width: 700px;">
+                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
+                <div class="card-img-overlay">
+                    <h4 style="margin-top: 300px;">Тест 3</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="card" style="width: 700px;">
+                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
+                <div class="card-img-overlay">
+                    <h4 style="margin-top: 300px;">Тест 4</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="card" style="width: 700px;">
+                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
+                <div class="card-img-overlay">
+                    <h4 style="margin-top: 300px;">Тест 1</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="card" style="width: 700px;">
+                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
+                <div class="card-img-overlay">
+                    <h4 style="margin-top: 300px;">Тест 2</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="card" style="width: 700px;">
+                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
+                <div class="card-img-overlay">
+                    <h4 style="margin-top: 300px;">Тест 3</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="card" style="width: 700px;">
+                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
+                <div class="card-img-overlay">
+                    <h4 style="margin-top: 300px;">Тест 4</h4>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
