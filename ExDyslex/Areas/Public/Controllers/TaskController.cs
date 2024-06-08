@@ -8,18 +8,17 @@ namespace ExDyslex.Public.Controllers
 {
     [Area("Public")]
     //[Authorize]
-    public class TestsController : Controller
+    public class TaskController : Controller
     {
-        private readonly ILogger<TestsController> _logger;
+        private readonly ILogger<TaskController> _logger;
 
-        public TestsController(ILogger<TestsController> logger)
+        public TaskController(ILogger<TaskController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            //var tests = new TestsBL().GetAllTests();
             return View();
         }
 
