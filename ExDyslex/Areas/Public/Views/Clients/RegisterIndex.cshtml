@@ -67,25 +67,25 @@
     <div class="row">
         <div class="col-md-6" style="padding-left: 0px;margin-top: 68px;">
             <form asp-action="Register" asp-controller="Clients" method="post" style="padding-left: 72px;padding-right: 72px;margin-left: 124px;margin-right: 90px;margin-top: 52px;">
-                <input type="hidden" name="Id" value="0"/>
+                <input type="hidden" asp-for="Id"/>
 
                 <p style="margin-bottom: 5px;">Имя</p>
-                <input class="form-control" name="FirstName" required type="text" style="border-color: #727CD6 !important;margin-bottom: 30px;">
+                <input class="form-control" asp-for="FirstName" required type="text" style="border-color: #727CD6 !important;margin-bottom: 30px;">
 
                 <p style="margin-bottom: 5px;">Фамилия</p>
-                <input class="form-control" name="LastName" type="text" style="border-color: #727CD6 !important;margin-bottom: 30px;">
+                <input class="form-control" asp-for="LastName" type="text" style="border-color: #727CD6 !important;margin-bottom: 30px;">
 
                 <p style="margin-bottom: 5px;">Отчество (при наличии)</p>
-                <input class="form-control" type="text" name="PatronymicName" style="border-color: #727CD6 !important;margin-bottom: 30px;">
+                <input class="form-control" type="text" asp-for="PatronymicName" style="border-color: #727CD6 !important;margin-bottom: 30px;">
 
                 <p style="margin-bottom: 5px;">Дата рождения</p>
-                <input class="form-control" type="date" name="Birthday" required style="margin-bottom: 30px;border-color: #727CD6 !important;">
+                <input class="form-control" type="date" asp-for="Birthday" required style="margin-bottom: 30px;border-color: #727CD6 !important;">
 
                 <p style="margin-bottom: 5px;">Email</p>
-                <input class="form-control" type="email" name="Email" required style="border-color: #727CD6 !important;/*border-bottom: #727CD6 !important;*//*border-top: white;*//*border-right: white;*//*border-left: white;*/margin-bottom: 30px;">
+                <input class="form-control" type="email" asp-for="Email" required style="border-color: #727CD6 !important;/*border-bottom: #727CD6 !important;*//*border-top: white;*//*border-right: white;*//*border-left: white;*/margin-bottom: 30px;">
 
                 <p style="margin-bottom: 5px;margin-top: 0px;">Пароль</p>
-                <input class="form-control" type="password" name="Password" required style="margin-bottom: 11px;border-color: #727CD6 !important;">
+                <input class="form-control" type="password" asp-for="Password" required style="margin-bottom: 11px;border-color: #727CD6 !important;">
                 
                 <a href="@Url.Action("Index", "Home")" style="padding-left: 0px;margin-left: 400px;color: #727CD6 !important;">Уже есть аккаунт? Войти</a>
                 

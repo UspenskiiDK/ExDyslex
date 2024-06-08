@@ -1,6 +1,7 @@
 using BL;
 using ExDyslex.Areas.Public.Models;
 using ExDyslex.Public.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 namespace ExDyslex.Public.Controllers
@@ -25,6 +26,8 @@ namespace ExDyslex.Public.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(ClientModel clientModel)
         {
             if (clientModel == null || !ModelState.IsValid)
@@ -68,6 +71,7 @@ namespace ExDyslex.Public.Controllers
             return RedirectToAction("Index", "Tests");
         }
 
+        [Authorize]
         public IActionResult PersonalCabinet()
         {
             return View();

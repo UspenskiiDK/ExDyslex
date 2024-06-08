@@ -7,7 +7,7 @@ using System.Diagnostics;
 namespace ExDyslex.Public.Controllers
 {
     [Area("Public")]
-    //[Authorize]
+    [Authorize]
     public class TestsController : Controller
     {
         private readonly ILogger<TestsController> _logger;

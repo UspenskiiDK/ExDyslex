@@ -1,21 +1,30 @@
 ﻿using Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace ExDyslex.Areas.Public.Models
 {
     public class ClientModel
     {
+        [Required]
         public int Id { get; set; } = 0;
+        [Required]
         public string FirstName { get; set; } = string.Empty;
         public string? LastName { get; set; }
         public string? PatronymicName { get; set; }
-        public string Birthday { get; set; }
+        [Required]
+        public DateTime Birthday { get; set; }
         public string? Phone { get; set; } = string.Empty;
+        [Required]
         public string Email { get; set; } = string.Empty;
+        [Required]
         public string Password { get; set; } = string.Empty;
         public string? MainPhotoPath { get; set; }
 
+
+        public ClientModel() { }
+
         public ClientModel(int id, string firstName, string? lastName, string? patronymicName, 
-            string birthday, string? phone, string email, string password, string? mainPhotoPath)
+            DateTime birthday, string? phone, string email, string password, string? mainPhotoPath)
         {
             Id = id;
             FirstName = firstName;

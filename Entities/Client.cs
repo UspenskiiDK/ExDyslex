@@ -6,7 +6,7 @@
         public string FirstName { get; set; } = string.Empty;
         public string? LastName { get; set; }
         public string? PatronymicName { get; set; }
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
         public string? Phone { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
@@ -14,7 +14,7 @@
         public List<TestsToClient>? TestsToClients { get; set; }
 
         public Client(int id, string firstName, string? lastName, string? patronymicName, 
-            string birthday, string? phone, string email, string password, string? mainPhotoPath)
+            DateTime birthday, string? phone, string email, string password, string? mainPhotoPath)
         {
             Id = id;
             FirstName = firstName;
