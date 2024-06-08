@@ -20,6 +20,11 @@ namespace ExDyslex.Public.Controllers
             return View();
         }
 
+        public IActionResult RegisterIndex()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Register(ClientModel clientModel)
         {
             if (clientModel == null || !ModelState.IsValid)
@@ -42,25 +47,25 @@ namespace ExDyslex.Public.Controllers
             }
         }
 
-        public async Task<string> Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
             var client = await new ClientsBL().GetClientByEmail(email);
 
             if (client == null)
-                return "Пользователь не найден";
+                return StatusCode(404);
 
             var isVerified = Common.Helpers.VerifyHashPassword(password, client.Password);
 
             if (isVerified == false)
             {
-                return "Неверный пароль";
+                return StatusCode(500);
             }
 
             var jwtToken = Common.Helpers.GenerateJwtToken(client);
 
             HttpContext.Response.Cookies.Append("efrD", jwtToken);
 
-            return jwtToken;
+            return RedirectToAction("Index", "Tests");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

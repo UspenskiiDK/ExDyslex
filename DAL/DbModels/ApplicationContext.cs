@@ -35,7 +35,7 @@ namespace DAL.DbModels
             modelBuilder.Entity<Client>(client =>
             {
                 client.Property(client => client.FirstName).IsRequired();
-                client.Property(client => client.Birthday).HasColumnType("datetime");
+                //client.Property(client => client.Birthday).HasColumnType("datetime");
                 client.Property(client => client.Email).IsRequired();
                 client.Property(client => client.Password).IsRequired();
             });
