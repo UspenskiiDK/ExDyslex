@@ -10,9 +10,9 @@ namespace BL
 {
     public class TestsBL
     {
-        public async Task CreateTest(Test test)
+        public async Task<int> CreateTest(Test test)
         {
-            await new TestsDAL().CreateTest(test);
+           return await new TestsDAL().CreateTest(test);
         }
 
         public async Task UpdateTest(Test test)

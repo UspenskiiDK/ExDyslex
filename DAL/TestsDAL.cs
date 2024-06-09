@@ -37,7 +37,7 @@ namespace DAL
             
         }
 
-        public async Task CreateTest(Test test)
+        public async Task<int> CreateTest(Test test)
         {
             var dbTest = ConvertToDbModel(test);
 
@@ -46,6 +46,8 @@ namespace DAL
                 await _context.Tests.AddAsync(dbTest);
                 await _context.SaveChangesAsync();
             }
+
+            return dbTest.Id;
         }
 
         public async Task UpdateTest(Test test)

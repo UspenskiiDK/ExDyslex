@@ -15,6 +15,13 @@ namespace ExDyslex.Admin.Controllers
             return View(tests);
         }
 
+        public IActionResult NewTest()
+        {
+            var tasks = new TasksBL().GetAllTasks();
+            ViewBag.AllTasks = tasks;
+            return View();
+        }
+
         public async Task<IActionResult> Test(int id)
         {
             var test = await new TestsBL().GetTestById(id);
@@ -37,13 +44,6 @@ namespace ExDyslex.Admin.Controllers
             ViewBag.ExistingTasksIds = existingTasksIds;
             return View(tt);
         }
-
-        [HttpPost]
-        public  void UpdateTasks([FromBody] List<string> tasksIDs)
-        {
-            
-        }
-
         public async Task<IActionResult> Update(TestTasksViewModel test)
         {
             if (test == null || !ModelState.IsValid)
@@ -77,6 +77,30 @@ namespace ExDyslex.Admin.Controllers
             await new TestsBL().UpdateTest(test.TestEntity);
 
             return RedirectToAction("Index", "Tests", new { Area = "Admin"});
+        }
+
+        public async Task<IActionResult> CreateTest(TestTasksViewModel test)
+        {
+            if (test == null || !ModelState.IsValid)
+                return StatusCode(500);
+
+            var newTTT = new List<TasksToTest>();
+            var tasksIdsString = test.TasksIds.Trim().Split(',');
+            var tasksIds = new List<int>();
+
+            foreach (var tstr in tasksIdsString)
+            {
+                tasksIds.Add(int.Parse(tstr));
+            }
+
+            var testId = await new TestsBL().CreateTest(test.TestEntity);
+
+            foreach (var tt in tasksIds)
+            {
+                await new TasksToTestsBL().CreateTaskToTest(new TasksToTest(0, tt, testId));
+            }
+
+            return RedirectToAction("Index", "Tests", new { Area = "Admin" });
         }
     }
 }
