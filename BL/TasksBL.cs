@@ -28,5 +28,11 @@ namespace BL
 
             return tasks;
         }
+
+        public Entities.Task? GetTaskById(int id)
+        {
+            var task = new TasksDAL().GetTaskById(id);
+            return task;
+        }
     }
 }

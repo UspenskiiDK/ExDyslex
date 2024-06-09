@@ -61,21 +61,29 @@ namespace ExDyslex.Admin.Controllers
             }
 
             var newTTT = new List<TasksToTest>();
-            var tasksIdsString = test.TasksIds.Trim().Split(',');
-            var tasksIds = new List<int>();
 
-            foreach (var tstr in tasksIdsString)
+            if (!string.IsNullOrWhiteSpace(test.TasksIds))
             {
-                tasksIds.Add(int.Parse(tstr));
-            }
+                var tasksIdsString = test.TasksIds.Trim().Split(',');
+                var tasksIds = new List<int>();
 
-            foreach (var tt in tasksIds)
+                foreach (var tstr in tasksIdsString)
+                {
+                    tasksIds.Add(int.Parse(tstr));
+                }
+
+                foreach (var tt in tasksIds)
+                {
+                    await new TasksToTestsBL().CreateTaskToTest(new TasksToTest(0, tt, test.TestEntity.Id));
+                }
+
+                await new TestsBL().UpdateTest(test.TestEntity);
+            }
+            else
             {
-                await new TasksToTestsBL().CreateTaskToTest(new TasksToTest(0, tt, test.TestEntity.Id));
+                await new TestsBL().UpdateTest(test.TestEntity);
             }
-
-            await new TestsBL().UpdateTest(test.TestEntity);
-
+            
             return RedirectToAction("Index", "Tests", new { Area = "Admin"});
         }
 
@@ -85,21 +93,29 @@ namespace ExDyslex.Admin.Controllers
                 return StatusCode(500);
 
             var newTTT = new List<TasksToTest>();
-            var tasksIdsString = test.TasksIds.Trim().Split(',');
-            var tasksIds = new List<int>();
 
-            foreach (var tstr in tasksIdsString)
+            if (!string.IsNullOrWhiteSpace(test.TasksIds))
             {
-                tasksIds.Add(int.Parse(tstr));
+                var tasksIdsString = test.TasksIds.Trim().Split(',');
+                var tasksIds = new List<int>();
+
+                foreach (var tstr in tasksIdsString)
+                {
+                    tasksIds.Add(int.Parse(tstr));
+                }
+
+                var testId = await new TestsBL().CreateTest(test.TestEntity);
+
+                foreach (var tt in tasksIds)
+                {
+                    await new TasksToTestsBL().CreateTaskToTest(new TasksToTest(0, tt, testId));
+                }
             }
-
-            var testId = await new TestsBL().CreateTest(test.TestEntity);
-
-            foreach (var tt in tasksIds)
+            else
             {
-                await new TasksToTestsBL().CreateTaskToTest(new TasksToTest(0, tt, testId));
+                await new TestsBL().CreateTest(test.TestEntity);
             }
-
+            
             return RedirectToAction("Index", "Tests", new { Area = "Admin" });
         }
     }

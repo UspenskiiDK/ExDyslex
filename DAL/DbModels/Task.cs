@@ -1,7 +1,10 @@
-﻿namespace DAL.DbModels
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DAL.DbModels
 {
     public class Task
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int TaskCategory { get; set; }
         public string TaskQuestion { get; set; }

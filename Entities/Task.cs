@@ -10,8 +10,8 @@
         public string? AnswerOption3 { get; set; }
         public string? AnswerOption4 { get; set; }
         public string? ImagePath { get; set; }
-        public List<Test> Tests { get; set; }
-        public List<TasksToTest> TasksToTests { get; set; }
+        public List<Test>? Tests { get; set; }
+        public List<TasksToTest>? TasksToTests { get; set; }
 
         public Task(int id, int taskCategory, string taskQuestion, 
             string? answerOption1, string? answerOption2, string? answerOption3, string? answerOption4,
@@ -40,6 +40,10 @@
             AnswerOption3 = answerOption3;
             AnswerOption4 = answerOption4;
             ImagePath = imagePath;
+        }
+
+        public Task()
+        {
         }
     }
 }

@@ -90,8 +90,8 @@ namespace DAL
                     AnswerOption3 = entityTask.AnswerOption3,
                     AnswerOption4 = entityTask.AnswerOption4,
                     ImagePath = entityTask.ImagePath,
-                    Tests = entityTask.Tests.Select(item => new TestsDAL().ConvertToDbModel(item)).ToList(),
-                    TasksToTests = entityTask.TasksToTests.Select(item => new TasksToTestsDAL().ConvertToDbModel(item)).ToList()
+                    //Tests = entityTask.Tests.Select(item => new TestsDAL().ConvertToDbModel(item)).ToList(),
+                    //TasksToTests = entityTask.TasksToTests.Select(item => new TasksToTestsDAL().ConvertToDbModel(item)).ToList()
                 };
         }
 

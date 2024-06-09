@@ -2,12 +2,12 @@
 
 namespace Common.Enums
 {
-    enum TaskCategories
+    public enum TaskCategories
     {
         [Display(Name ="Задание с письменным ответом")]
-        TextQuestion,
+        Задание_с_письменным_ответом,
 
         [Display(Name ="Задание с выбором варианта ответа")]
-        ChooseQuestion
+        Задание_с_выбором_варианта_ответа
     }
 }
