@@ -65,6 +65,14 @@ namespace DAL
             return ConvertToEntity(dbClient);
         }
 
+        public async Task<List<Client?>> GetAllClients()
+        {
+            var dbClients =
+                await _context.Clients.AsNoTracking().Select(item => item).ToListAsync() ?? throw new Exception();
+
+            return dbClients.Select(client => ConvertToEntity(client)).ToList();
+        }
+
         public DbModels.Client? ConvertToDbModel(Client? entityClient)
         {
             return entityClient == null ? null :

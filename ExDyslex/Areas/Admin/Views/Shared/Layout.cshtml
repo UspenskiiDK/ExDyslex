@@ -13,11 +13,10 @@
         </div>
         <ul class="menu">
             <li>@Html.ActionLink("Главная", "Index", "Home", new { area = "Admin" })</li>
-            <li>@Html.ActionLink("Пользователи", "Users", "Home", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Пользователи", "Index", "Clients", new { area = "Admin" })</li>
             <li>@Html.ActionLink("Тесты", "Tests", "Home", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Задания", "Tests", "Home", new { area = "Admin" })</li>
             <li>@Html.ActionLink("Статистика", "Stats", "Home", new { area = "Admin" })</li>
-            <li><a href="settings.html">Настройки</a></li>
-            <li><a href="logout.html">Выход</a></li>
         </ul>
     </div>
 

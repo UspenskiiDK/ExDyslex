@@ -10,11 +10,6 @@ namespace ExDyslex.Admin.Controllers
             return View();
         }
 
-        public IActionResult Users()
-        {
-            return View();
-        }
-
         public IActionResult Stats()
         {
             return View();

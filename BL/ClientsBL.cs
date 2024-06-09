@@ -32,5 +32,9 @@ namespace BL
         {
             return await new ClientsDAL().GetClientById(clientId);
         }
+        public async Task<List<Client?>> GetAllClients()
+        {
+            return await new ClientsDAL().GetAllClients();
+        }
     }
 }
