@@ -37,14 +37,14 @@ namespace ExDyslex.Areas.Public.Models
             MainPhotoPath = mainPhotoPath;
         }
 
-        public ClientModel? ConvertFromEntity(Client clientEntity)
+        public static ClientModel? ConvertFromEntity(Client clientEntity)
         {
             return clientEntity == null ? null :
                 new ClientModel(clientEntity.Id,clientEntity.FirstName, clientEntity.LastName, clientEntity.PatronymicName,
                     clientEntity.Birthday, clientEntity.Phone, clientEntity.Email, clientEntity.Password, clientEntity.MainPhotoPath);
         }
 
-        public Client? ConvertToEntity(ClientModel clientModel)
+        public static Client? ConvertToEntity(ClientModel clientModel)
         {
             return clientModel == null ? null :
                 new Client(clientModel.Id, clientModel.FirstName, clientModel.LastName, clientModel.PatronymicName,

@@ -27,5 +27,10 @@ namespace BL
         {
             return await new ClientsDAL().GetClientByEmail(email);
         }
+
+        public async Task<Client?> GetClientById(int clientId)
+        {
+            return await new ClientsDAL().GetClientById(clientId);
+        }
     }
 }

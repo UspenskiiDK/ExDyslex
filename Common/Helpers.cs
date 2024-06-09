@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Security.Claims;
+using Microsoft.IdentityModel.Logging;
 
 namespace Common
 {
@@ -34,6 +35,26 @@ namespace Common
                 claims: claims);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public static ClaimsPrincipal ValidateToken(string jwtToken)
+        {
+            IdentityModelEventSource.ShowPII = true;
+
+            SecurityToken validatedToken;
+            TokenValidationParameters validationParameters = new TokenValidationParameters();
+
+            validationParameters.ValidateLifetime = true;
+            validationParameters.ValidateAudience = false;
+            validationParameters.ValidateIssuer = false;
+
+            validationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+                .GetBytes("lbvf2ghjrcbuhjr6ikyhntgbqwcvbghdk56slssdsdssnfksf343ksadfaf"));
+
+            ClaimsPrincipal principal = new JwtSecurityTokenHandler().ValidateToken(jwtToken, validationParameters, out validatedToken);
+
+
+            return principal;
         }
     }
 }
