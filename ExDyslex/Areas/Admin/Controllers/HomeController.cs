@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BL;
+using Common.Enums;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ExDyslex.Admin.Controllers
 {
@@ -10,14 +13,33 @@ namespace ExDyslex.Admin.Controllers
             return View();
         }
 
-        public IActionResult Stats()
+        public async Task<IActionResult> Stats(int? id)
         {
+            var clients = await new ClientsBL().GetAllClients();
+            var selectListClients = clients.Select(e => new SelectListItem() { Text = $"{e.LastName} {e.FirstName}", Value = e.Id.ToString() }).ToList();
+            ViewBag.selectListClients = selectListClients;
+
+            var tests = new TestsBL().GetAllTests();
+            var selectListTests = tests.Select(e => new SelectListItem() { Text = $"{e.Name}", Value = e.Id.ToString() }).ToList();
+            ViewBag.selectListTests = selectListTests;
+
+            if (id != null)
+            {
+                ViewBag.idd = id;
+            }
             return View();
         }
 
         public IActionResult Tests()
         {
             return View();
+        }
+
+        public IActionResult GetIdClient([FromBody]string id)
+        {
+            int iddd = int.Parse(id);
+
+            return RedirectToAction("Stats", "Home", new { Area = "Admin", id = iddd});
         }
     }
 }
