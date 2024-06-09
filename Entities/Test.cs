@@ -14,5 +14,10 @@
             Name = name;
             ImagePath = imagePath;
         }
+
+        public Test()
+        {
+
+        }
     }
 }

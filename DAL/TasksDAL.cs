@@ -56,6 +56,28 @@ namespace DAL
             return ConvertToEntityShort(dbTask);
         }
 
+        public List<Entities.Task> GetAllTasks()
+        {
+            var dbTasks = _context.Tasks.Select(item => item).ToList();
+
+            var entitiesTasks = new List<Entities.Task>();
+
+            if (dbTasks != null)
+            {
+                entitiesTasks = dbTasks.Select(item => ConvertToEntityShort(item)).ToList();
+            }
+
+            if (entitiesTasks != null)
+            {
+                return entitiesTasks;
+            }
+            else
+            {
+                return new List<Entities.Task>();
+            }
+
+        }
+
         public DbModels.Task? ConvertToDbModel(Entities.Task? entityTask)
         {
             return entityTask == null ? null :

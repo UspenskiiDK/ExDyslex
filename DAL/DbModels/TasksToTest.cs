@@ -1,7 +1,10 @@
-﻿namespace DAL.DbModels
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DAL.DbModels
 {
     public class TasksToTest
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int TaskId { get; set; }
         public int TestId { get; set; }

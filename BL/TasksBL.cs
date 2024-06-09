@@ -21,5 +21,12 @@ namespace BL
         {
             await new TasksDAL().DeleteTask(task);
         }
+
+        public List<Entities.Task> GetAllTasks()
+        {
+            var tasks = new TasksDAL().GetAllTasks();
+
+            return tasks;
+        }
     }
 }

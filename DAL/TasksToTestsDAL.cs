@@ -66,9 +66,9 @@ namespace DAL
                     Id = entityTaskToTest.Id,
                     TaskId = entityTaskToTest.TaskId,
                     TestId = entityTaskToTest.TestId,
-                    Task = new TasksDAL().ConvertToDbModel(entityTaskToTest.Task),
-                    Test = new TestsDAL().ConvertToDbModel(entityTaskToTest.Test),
-                    TestsToClients = entityTaskToTest.TestsToClients.Select(item => new TestsToClientsDAL().ConvertToDbModel(item)).ToList(),
+                    //Task = new TasksDAL().ConvertToDbModel(entityTaskToTest.Task),
+                    //Test = new TestsDAL().ConvertToDbModel(entityTaskToTest.Test),
+                    //TestsToClients = entityTaskToTest.TestsToClients.Select(item => new TestsToClientsDAL().ConvertToDbModel(item)).ToList(),
                 };
         }
 
