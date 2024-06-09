@@ -31,5 +31,10 @@ namespace BL
 
             return tests;
         }
+
+        public async Task<Test?> GetTestById(int testId)
+        {
+            return await new TestsDAL().GetTesttById(testId);
+        }
     }
 }

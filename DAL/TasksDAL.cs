@@ -48,6 +48,14 @@ namespace DAL
             }
         }
 
+        public Entities.Task? GetTaskById(int taskId)
+        {
+            var dbTask =
+                _context.Tasks.AsNoTracking().FirstOrDefault(task => task.Id == taskId) ?? throw new Exception();
+
+            return ConvertToEntityShort(dbTask);
+        }
+
         public DbModels.Task? ConvertToDbModel(Entities.Task? entityTask)
         {
             return entityTask == null ? null :
@@ -59,6 +67,7 @@ namespace DAL
                     AnswerOption2 = entityTask.AnswerOption2,
                     AnswerOption3 = entityTask.AnswerOption3,
                     AnswerOption4 = entityTask.AnswerOption4,
+                    ImagePath = entityTask.ImagePath,
                     Tests = entityTask.Tests.Select(item => new TestsDAL().ConvertToDbModel(item)).ToList(),
                     TasksToTests = entityTask.TasksToTests.Select(item => new TasksToTestsDAL().ConvertToDbModel(item)).ToList()
                 };
@@ -68,8 +77,15 @@ namespace DAL
         {
             return dbTask == null ? null :
                 new Entities.Task(dbTask.Id, dbTask.TaskCategory, dbTask.TaskQuestion, dbTask.AnswerOption1, dbTask.AnswerOption2,
-                    dbTask.AnswerOption3, dbTask.AnswerOption4, dbTask.Tests.Select(item => new TestsDAL().ConvertToEntity(item)).ToList(), 
+                    dbTask.AnswerOption3, dbTask.AnswerOption4, dbTask.ImagePath, dbTask.Tests.Select(item => new TestsDAL().ConvertToEntity(item)).ToList(), 
                     dbTask.TasksToTests.Select(item => new TasksToTestsDAL().ConvertToEntity(item)).ToList());
+        }
+
+        public Entities.Task? ConvertToEntityShort(DbModels.Task? dbTask)
+        {
+            return dbTask == null ? null :
+                new Entities.Task(dbTask.Id, dbTask.TaskCategory, dbTask.TaskQuestion, dbTask.AnswerOption1, dbTask.AnswerOption2,
+                    dbTask.AnswerOption3, dbTask.AnswerOption4, dbTask.ImagePath);
         }
     }
 }

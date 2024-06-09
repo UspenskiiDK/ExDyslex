@@ -1,4 +1,8 @@
-﻿@{
+﻿@using ExDyslex.Areas.Public.Models
+
+@model TestModel
+
+@{
     ViewData["Title"] = "Тест";
 }
 
@@ -17,45 +21,62 @@
 </div>
 <hr style="color: var(--bs-link-hover-color);/*height: 5px;*/border-top: 2px solid;opacity: 1;">
 
-<button class="btn btn-primary bg-primary border rounded-pill" type="submit" style="margin-top: 20px;padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-left: 10px;margin-right: 10px;margin-left:1500px;">В каталог тестов</button>
+<a href="@Url.Action("Index", "Tests")" class="btn btn-primary bg-primary border rounded-pill" type="submit" style="margin-top: 20px;padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-left: 10px;margin-right: 10px;margin-left:1500px;">В каталог тестов</a>
 
-
-<div class="container" style="margin-right: 350px;padding-left: 0px;padding-right: 0px;margin-left: 302px;">
-    <p style="margin-left: 550px;margin-top: 32px;">Вопрос: 1 из 10</p>
-    <h1 style="margin-right: -2px;margin-left: 472px;margin-top: -8px;">Текст вопроса 1</h1>
-    <img src="/img/Kamado-Tanjiro-Kimetsu-no-Yaiba-anime-anime-boys-Anime-screenshot-kimono-2258114-wallhere.com.jpg" width="380" height="213" style="margin-left: 430px;">
-</div>
-<div class="container" style="padding-left: 215px;padding-right: 215px;margin-top: 27px;margin-left: 300px;">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-check">
-                <input class="form-check-input" name="question1" type="radio" id="formCheck-1">
-                <label class="form-check-label" for="formCheck-1">Ответ 1</label>
+@if (Model != null && Model.Tasks?.Count > 0)
+{
+    for (int i = 0; i < Model.Tasks.Count; i++)
+    {
+        if (Model.Tasks[i].TaskCategory == 1)
+        {
+            <div class="container" style="margin-right: 350px;padding-left: 0px;padding-right: 0px;margin-left: 302px;">
+                <p style="margin-left: 550px;margin-top: 32px;">@($"Вопрос: {i + 1} из {Model.Tasks.Count} ")</p>
+                <h1 style="margin-right: -2px;margin-left: 300px;margin-top: -8px;">@(Model.Tasks[i].TaskQuestion)</h1>
+                <img src="@(string.IsNullOrEmpty(Model.Tasks[i].ImagePath) ? "/img/Kamado-Tanjiro-Kimetsu-no-Yaiba-anime-anime-boys-Anime-screenshot-kimono-2258114-wallhere.com.jpg" : Model.Tasks[i].ImagePath)" width="380" height="213" style="margin-left: 430px;">
             </div>
-            <div class="form-check" style="margin-top: 10px;">
-                <input class="form-check-input" name="question1" type="radio" id="formCheck-2">
-                <label class="form-check-label" for="formCheck-2">Ответ 2</label>
+            <div class="container" style="padding-left: 215px;padding-right: 215px;margin-top: 27px;margin-left: 300px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" name="question1" type="radio" id="formCheck-1">
+                            <label class="form-check-label" for="formCheck-1">@Model.Tasks[i].AnswerOption1</label>
+                        </div>
+                        <div class="form-check" style="margin-top: 10px;">
+                            <input class="form-check-input" name="question1" type="radio" id="formCheck-2">
+                            <label class="form-check-label" for="formCheck-2">@Model.Tasks[i].AnswerOption2</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" name="question1" type="radio" id="formCheck-3">
+                            <label class="form-check-label" for="formCheck-3">@Model.Tasks[i].AnswerOption3</label>
+                        </div>
+                        <div class="form-check" style="margin-top: 10px;">
+                            <input class="form-check-input" name="question1" type="radio" id="formCheck-4">
+                            <label class="form-check-label" for="formCheck-4">@Model.Tasks[i].AnswerOption4</label>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-check">
-                <input class="form-check-input" name="question1" type="radio" id="formCheck-3">
-                <label class="form-check-label" for="formCheck-3">Ответ 3</label></div>
-            <div class="form-check" style="margin-top: 10px;">
-                <input class="form-check-input" name="question1" type="radio" id="formCheck-4">
-                <label class="form-check-label" for="formCheck-4">Ответ 4</label></div>
-        </div>
-    </div>
-</div>
+        }
+        else
+        {
+            <div class="container" style="margin-right: 350px;padding-left: 0px;padding-right: 0px;margin-left: 302px;">
+                <p style="margin-left: 550px;margin-top: 32px;">@($"Вопрос: {i + 1} из {Model.Tasks.Count} ")</p>
+                <h1 style="margin-right: -2px;margin-left: 300px;margin-top: 59px;">@Model.Tasks[i].TaskQuestion</h1>
+                <input type="text" style="margin-top: 51px;padding-right: 72px;padding-left: 54px;margin-right: 62px;margin-left: 469px;border-radius: 20%;/*color: var(--bs-purple);*/border-color: #9CA3E0 !important;">
+            </div>
+        }
 
-<hr style="color: var(--bs-link-hover-color);/*height: 5px;*/border-top: 2px solid;opacity: 1;">
+        <hr style="color: var(--bs-link-hover-color);/*height: 5px;*/border-top: 2px solid;opacity: 1;">
+    }
 
-<div class="container" style="margin-right: 350px;padding-left: 0px;padding-right: 0px;margin-left: 302px;">
-    <p style="margin-left: 550px;margin-top: 32px;">Вопрос: 2 из 10</p>
-    <h1 style="margin-right: -2px;margin-left: 472px;margin-top: 59px;">Текст вопроса 2</h1>
-    <input type="text" style="margin-top: 51px;padding-right: 72px;padding-left: 54px;margin-right: 62px;margin-left: 469px;border-radius: 20%;/*color: var(--bs-purple);*/border-color: #9CA3E0 !important;">
-</div>
 
-<hr style="color: var(--bs-link-hover-color);/*height: 5px;*/border-top: 2px solid;opacity: 1;">
+    <button class="btn btn-primary bg-primary border rounded-pill" type="submit" style="padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-right: 180px;margin-top: 68px;margin-left: 850px;">Завершить тест</button>
+}
+else
+{
+    <h1 style="margin-left: 50px;">К сожалению, в данном тесте пока нет ни одного задания. Попробуйте проверить попозже.</h1>
+}
 
-<button class="btn btn-primary bg-primary border rounded-pill" type="submit" style="padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-right: 180px;margin-top: 68px;margin-left: 850px;">Завершить тест</button>
+

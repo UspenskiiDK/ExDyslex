@@ -9,6 +9,7 @@
         public string? AnswerOption2 { get; set; }
         public string? AnswerOption3 { get; set; }
         public string? AnswerOption4 { get; set; }
+        public string? ImagePath { get; set; }
         public virtual ICollection<Test> Tests { get; set; }
         public virtual ICollection<TasksToTest> TasksToTests { get; set; }
     }

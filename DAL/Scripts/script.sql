@@ -63,3 +63,6 @@ Answer nvarchar(max),
 Grade int
 )
 go
+
+alter table Tasks add ImagePath nvarchar(max) null
+go

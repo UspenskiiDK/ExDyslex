@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using TasksToTest = Entities.TasksToTest;
 using Task = System.Threading.Tasks.Task;
+using Entities;
 
 namespace DAL
 {
@@ -49,6 +50,15 @@ namespace DAL
             }
         }
 
+        public List<TasksToTest> GetTaskToTestByTestId(int testId)
+        {
+            var dbTasksToTests = _context.TasksToTests.AsNoTracking()
+                .Select(item => item)
+                .Where(ttt => ttt.TestId == testId).ToList() ?? throw new Exception();
+
+            return dbTasksToTests.Select(item => ConvertToEntityShort(item)).ToList();
+        }
+
         public DbModels.TasksToTest? ConvertToDbModel(TasksToTest? entityTaskToTest)
         {
             return entityTaskToTest == null ? null :
@@ -68,6 +78,12 @@ namespace DAL
                 new TasksToTest(dbTasksToTest.Id, dbTasksToTest.TaskId, dbTasksToTest.TestId, 
                 new TasksDAL().ConvertToEntity(dbTasksToTest.Task), new TestsDAL().ConvertToEntity(dbTasksToTest.Test),
                 dbTasksToTest.TestsToClients.Select(item => new TestsToClientsDAL().ConvertToEntity(item)).ToList());
+        }
+
+        public TasksToTest? ConvertToEntityShort(DbModels.TasksToTest? dbTasksToTest)
+        {
+            return dbTasksToTest == null ? null :
+                new TasksToTest(dbTasksToTest.Id, dbTasksToTest.TaskId, dbTasksToTest.TestId);
         }
     }
 }

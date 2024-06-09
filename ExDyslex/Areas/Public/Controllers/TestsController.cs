@@ -27,9 +27,16 @@ namespace ExDyslex.Public.Controllers
             return View(testsModel);
         }
 
-        public IActionResult Test(int id)
+        public async Task<IActionResult> Test(int id)
         {
-            return View();
+            var testEntity = await new TestsBL().GetTestById(id);
+
+            if (testEntity == null)
+                return BadRequest();
+
+            var testModel = TestModel.ConvertFromEntity(testEntity);
+
+            return View(testModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

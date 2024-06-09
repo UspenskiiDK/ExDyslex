@@ -70,6 +70,14 @@ namespace DAL
             }
         }
 
+        public async Task<Test?> GetTesttById(int testId)
+        {
+            var dbTest =
+                await _context.Tests.AsNoTracking().FirstOrDefaultAsync(test => test.Id == testId) ?? throw new Exception();
+
+            return ConvertToEntity(dbTest);
+        }
+
         public DbModels.Test? ConvertToDbModel(Test? entityTest)
         {
             return entityTest == null ? null :
@@ -84,7 +92,21 @@ namespace DAL
 
         public Test ConvertToEntity(DbModels.Test dbTest)
         {
-            return new Test(dbTest.Id, dbTest.Name, dbTest.ImagePath);
+            var test = new Test(dbTest.Id, dbTest.Name, dbTest.ImagePath);
+
+            var ttt = new TasksToTestsDAL().GetTaskToTestByTestId(test.Id);
+            var tasks = ttt.Select(item => new TasksDAL().GetTaskById(item.TaskId)).ToList();
+
+            if (tasks != null && tasks.Count > 0)
+            {
+                test.Tasks = tasks;
+            }
+            else
+            {
+                test.Tasks = new List<Entities.Task>();
+            }
+
+            return test;
         }
     }
 }

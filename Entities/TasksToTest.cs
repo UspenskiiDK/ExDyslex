@@ -19,5 +19,12 @@
             Test = test;
             TestsToClients = testsToClients;
         }
+
+        public TasksToTest(int id, int taskId, int testId)
+        {
+            Id = id;
+            TaskId = taskId;
+            TestId = testId;
+        }
     }
 }
