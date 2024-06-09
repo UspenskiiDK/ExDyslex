@@ -25,7 +25,7 @@ namespace BL
             await new TestsDAL().DeleteTest(test);
         }
 
-        public List<Test?> GetAllTests()
+        public List<Test> GetAllTests()
         {
             var tests = new TestsDAL().GetAllTests();
 

@@ -14,5 +14,17 @@ namespace ExDyslex.Areas.Public.Models
             Name = name;
             ImagePath = imagePath;
         }
+
+        public static TestModel? ConvertFromEntity(Test testEntity)
+        {
+            return testEntity == null ? null :
+                new TestModel(testEntity.Id, testEntity.Name, testEntity.ImagePath);
+        }
+
+        public static Test? ConvertToEntity(TestModel testModel)
+        {
+            return testModel == null ? null :
+                new Test(testModel.Id, testModel.Name, testModel.ImagePath);
+        }
     }
 }

@@ -1,4 +1,5 @@
 using BL;
+using ExDyslex.Areas.Public.Models;
 using ExDyslex.Public.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,14 @@ namespace ExDyslex.Public.Controllers
 
         public IActionResult Index()
         {
-            //var tests = new TestsBL().GetAllTests();
-            return View();
+            var tests = new TestsBL().GetAllTests();
+
+            var testsModel = tests.Select(item => TestModel.ConvertFromEntity(item)).ToList();
+
+            return View(testsModel);
         }
 
-        public IActionResult Test()
+        public IActionResult Test(int id)
         {
             return View();
         }

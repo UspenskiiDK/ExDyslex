@@ -15,18 +15,26 @@ namespace DAL
         {
             _context = context;
         }
-        public List<Test?> GetAllTests()
+        public List<Test> GetAllTests()
         {
             var dbTests = _context.Tests.Select(item => item).ToList();
 
-            var entitiesTests = new List<Test?>();
+            var entitiesTests = new List<Test>();
 
             if (dbTests != null)
             {
                 entitiesTests = dbTests.Select(item => ConvertToEntity(item)).ToList();
             }
 
-            return entitiesTests;
+            if (entitiesTests != null)
+            {
+                return entitiesTests;
+            }
+            else
+            {
+                return new List<Test>();
+            }
+            
         }
 
         public async Task CreateTest(Test test)
@@ -74,10 +82,9 @@ namespace DAL
                 };
         }
 
-        public Test? ConvertToEntity(DbModels.Test? dbTest)
+        public Test ConvertToEntity(DbModels.Test dbTest)
         {
-            return dbTest == null ? null :
-                new Test(dbTest.Id, dbTest.Name, dbTest.ImagePath);
+            return new Test(dbTest.Id, dbTest.Name, dbTest.ImagePath);
         }
     }
 }

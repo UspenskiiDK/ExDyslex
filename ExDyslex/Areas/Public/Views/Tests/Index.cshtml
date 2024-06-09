@@ -1,8 +1,20 @@
-﻿@{
+﻿@using ExDyslex.Areas.Public.Models
+
+@model List<TestModel>
+
+@{
     ViewData["Title"] = "Каталог тестов";
 }
 
 <style>
+    .card {
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
     .bs-icon {
         --bs-icon-size: .75rem;
         display: flex;
@@ -83,53 +95,23 @@
 
 <div class="container" style="margin-left: 70px;margin-right: 2300px;">
     <div class="row">
-        <div class="col-md-4" style="margin-top: 80px;">
-            <div class="card" style="width: 500px;">
-                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
-                <div class="card-img-overlay">
-                    <h4 style="margin-top: 210px;">Тест 1</h4>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var test in Model)
+            {
+                <div class="col-md-4" style="margin-top: 80px;">
+                    <a class="card" href="@Url.Action("Test", "Tests", new {id = test.Id})" style="width: 500px;">
+                        <img class="card-img w-100 d-block" src="@(string.IsNullOrEmpty(test.ImagePath) ? "/img/scale_1200.jpg" : test.ImagePath)">
+                        <div class="card-img-overlay">
+                            <h4 style="margin-top: 210px;">@test.Name</h4>
+                        </div>
+                    </a>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top: 80px;">
-            <div class="card" style="width: 500px;">
-                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
-                <div class="card-img-overlay">
-                    <h4 style="margin-top: 210px;">Тест 2</h4>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top: 80px;">
-            <div class="card" style="width: 500px;">
-                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
-                <div class="card-img-overlay">
-                    <h4 style="margin-top: 210px;">Тест 3</h4>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top: 80px;">
-            <div class="card" style="width: 500px;">
-                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
-                <div class="card-img-overlay">
-                    <h4 style="margin-top: 210px;">Тест 1</h4>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top: 80px;">
-            <div class="card" style="width: 500px;">
-                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
-                <div class="card-img-overlay">
-                    <h4 style="margin-top: 210px;">Тест 2</h4>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top: 80px;">
-            <div class="card" style="width: 500px;">
-                <img class="card-img w-100 d-block" src="/img/scale_1200.jpg">
-                <div class="card-img-overlay">
-                    <h4 style="margin-top: 210px;">Тест 3</h4>
-                </div>
-            </div>
-        </div>
+            }
+        }
+        else
+        {
+            <h1>На данный момент каталог тестов пуст. Возвращайтесь чуть позже.</h1>
+        }
     </div>
 </div>
