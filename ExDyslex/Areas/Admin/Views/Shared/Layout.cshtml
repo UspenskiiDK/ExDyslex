@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExDyslex</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Панель администратора</h2>
+        </div>
+        <ul class="menu">
+            <li>@Html.ActionLink("Главная", "Index", "Home", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Пользователи", "Index", "Clients", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Тесты", "Index", "Tests", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Задания", "Index", "Tasks", new { area = "Admin" })</li>
+            <li>@Html.ActionLink("Статистика", "Stats", "Home", new { area = "Admin" })</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

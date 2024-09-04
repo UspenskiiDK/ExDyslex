@@ -1,0 +1,87 @@
+﻿@using ExDyslex.Areas.Public.Models
+
+@model TestModel
+
+@{
+    ViewData["Title"] = "Тест";
+}
+
+
+<div class="row">
+    <div class="col">
+        <a href="https://www.sgu.ru/">
+            <img src="/img/Logo_SGU.jpg" width="106" height="98" style="margin-top: 20px;margin-left: 50px;margin-bottom: 0px;display: inline;">
+        </a>
+        <p style="margin-left: 50px;">САРАТОВСКИЙ НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ<br>ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ ИМЕНИ Н.&nbsp;Г.&nbsp;ЧЕРНЫШЕВСКОГО<br></p>
+    </div>
+    <div class="col" style="margin-top: 0px;margin-left: 300px;">
+        <a href="@Url.Action("PersonalCabinetIndex", "Clients")">
+            <img src="/img/boy.png" width="106" height="141" style="border-radius: 50%;width: 100px;height: 100px;margin-top: 20px;margin-left: 803px;margin-right: 50px;">
+        </a>
+        <p class="fs-2 fw-normal" style="/*display: inline;*/padding-top: 0px;margin-bottom: 0px;margin-top: 0px;margin-left: 791px;margin-right: 50px;color: #9CA3E0;">Дмитрий</p>
+    </div>
+</div>
+<hr style="color: var(--bs-link-hover-color);/*height: 5px;*/border-top: 2px solid;opacity: 1;">
+
+<a href="@Url.Action("Index", "Tests")" class="btn btn-primary bg-primary border rounded-pill" type="submit" style="margin-top: 20px;padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-left: 10px;margin-right: 10px;margin-left:1500px;">В каталог тестов</a>
+
+@if (Model != null && Model.Tasks?.Count > 0)
+{
+    for (int i = 0; i < Model.Tasks.Count; i++)
+    {
+        if (Model.Tasks[i].TaskCategory == 1)
+        {
+            <div class="container" style="margin-right: 350px;padding-left: 0px;padding-right: 0px;margin-left: 302px;">
+                <p style="margin-left: 550px;margin-top: 32px;">@($"Вопрос: {i + 1} из {Model.Tasks.Count} ")</p>
+                <h1 style="margin-right: -2px;margin-left: 300px;margin-top: -8px;">@(Model.Tasks[i].TaskQuestion)</h1>
+                @if (!string.IsNullOrEmpty(Model.Tasks[i].ImagePath))
+                {
+                    <img src="@(Model.Tasks[i].ImagePath)" width="380" height="213" style="margin-left: 430px;">
+                }
+            </div>
+            <div class="container" style="padding-left: 215px;padding-right: 215px;margin-top: 27px;margin-left: 300px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" name="@($"questionCheckbox_{i}")" type="radio" id="formCheck-1">
+                            <label class="form-check-label" for="formCheck-1">@Model.Tasks[i].AnswerOption1</label>
+                        </div>
+                        <div class="form-check" style="margin-top: 10px;">
+                            <input class="form-check-input" name="@($"questionCheckbox_{i}")" type="radio" id="formCheck-2">
+                            <label class="form-check-label" for="formCheck-2">@Model.Tasks[i].AnswerOption2</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" name="@($"questionCheckbox_{i}")" type="radio" id="formCheck-3">
+                            <label class="form-check-label" for="formCheck-3">@Model.Tasks[i].AnswerOption3</label>
+                        </div>
+                        <div class="form-check" style="margin-top: 10px;">
+                            <input class="form-check-input" name="@($"questionCheckbox_{i}")" type="radio" id="formCheck-4">
+                            <label class="form-check-label" for="formCheck-4">@Model.Tasks[i].AnswerOption4</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="container" style="margin-right: 350px;padding-left: 0px;padding-right: 0px;margin-left: 302px;">
+                <p style="margin-left: 550px;margin-top: 32px;">@($"Вопрос: {i + 1} из {Model.Tasks.Count} ")</p>
+                <h1 style="margin-right: -2px;margin-left: 300px;margin-top: 59px;">@Model.Tasks[i].TaskQuestion</h1>
+                <input type="text" name="@($"questionAnswer_{i}")" style="margin-top: 51px;padding-right: 72px;padding-left: 54px;margin-right: 62px;margin-left: 469px;border-radius: 20%;/*color: var(--bs-purple);*/border-color: #9CA3E0 !important;">
+            </div>
+        }
+
+        <hr style="color: var(--bs-link-hover-color);/*height: 5px;*/border-top: 2px solid;opacity: 1;">
+    }
+
+
+    <a href="@Url.Action("Index", "Tests")" class="btn btn-primary bg-primary border rounded-pill" type="submit" style="padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-right: 180px;margin-top: 68px;margin-left: 850px;">Завершить тест</a>
+}
+else
+{
+    <h1 style="margin-left: 50px;">К сожалению, в данном тесте пока нет ни одного задания. Попробуйте проверить попозже.</h1>
+}
+
+

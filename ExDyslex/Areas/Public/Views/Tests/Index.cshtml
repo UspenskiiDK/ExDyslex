@@ -1,0 +1,117 @@
+﻿@using ExDyslex.Areas.Public.Models
+
+@model List<TestModel>
+
+@{
+    ViewData["Title"] = "Каталог тестов";
+}
+
+<style>
+    .card {
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .bs-icon {
+        --bs-icon-size: .75rem;
+        display: flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        font-size: var(--bs-icon-size);
+        width: calc(var(--bs-icon-size) * 2);
+        height: calc(var(--bs-icon-size) * 2);
+        color: var(--bs-primary);
+    }
+
+    .bs-icon-xs {
+        --bs-icon-size: 1rem;
+        width: calc(var(--bs-icon-size) * 1.5);
+        height: calc(var(--bs-icon-size) * 1.5);
+    }
+
+    .bs-icon-sm {
+        --bs-icon-size: 1rem;
+    }
+
+    .bs-icon-md {
+        --bs-icon-size: 1.5rem;
+    }
+
+    .bs-icon-lg {
+        --bs-icon-size: 2rem;
+    }
+
+    .bs-icon-xl {
+        --bs-icon-size: 2.5rem;
+    }
+
+    .bs-icon.bs-icon-primary {
+        color: var(--bs-white);
+        background: var(--bs-primary);
+    }
+
+    .bs-icon.bs-icon-primary-light {
+        color: var(--bs-primary);
+        background: rgba(var(--bs-primary-rgb), .2);
+    }
+
+    .bs-icon.bs-icon-semi-white {
+        color: var(--bs-primary);
+        background: rgba(255, 255, 255, .5);
+    }
+
+    .bs-icon.bs-icon-rounded {
+        border-radius: .5rem;
+    }
+
+    .bs-icon.bs-icon-circle {
+        border-radius: 50%;
+    }
+
+</style>
+
+
+<div class="row">
+    <div class="col">
+        <a href="https://www.sgu.ru/">
+            <img src="/img/Logo_SGU.jpg" width="106" height="98" style="margin-top: 20px;margin-left: 50px;margin-bottom: 0px;display: inline;">
+        </a>
+        <p style="margin-left: 50px;">САРАТОВСКИЙ НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ<br>ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ ИМЕНИ Н.&nbsp;Г.&nbsp;ЧЕРНЫШЕВСКОГО<br></p>
+    </div>
+    <div class="col" style="margin-top: 0px;margin-left: 300px;">
+        <a href="@Url.Action("PersonalCabinetIndex", "Clients")">
+            <img src="/img/boy.png" width="106" height="141" style="border-radius: 50%;width: 100px;height: 100px;margin-top: 20px;margin-left: 803px;margin-right: 50px;">
+        </a>
+        <p class="fs-2 fw-normal" style="/*display: inline;*/padding-top: 0px;margin-bottom: 0px;margin-top: 0px;margin-left: 791px;margin-right: 50px;color: #9CA3E0;">Дмитрий</p>
+    </div>
+</div>
+<hr style="color: var(--bs-link-hover-color);/*height: 5px;*/border-top: 2px solid;opacity: 1;">
+
+<h1 style="margin-left: 730px;margin-top: 56px;">Выбери тест из списка ниже</h1>
+
+<div class="container" style="margin-left: 70px;margin-right: 2300px;">
+    <div class="row">
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var test in Model)
+            {
+                <div class="col-md-4" style="margin-top: 80px;">
+                    <a class="card" href="@Url.Action("Test", "Tests", new {id = test.Id})" style="width: 500px;">
+                        <img class="card-img w-100 d-block" src="@(string.IsNullOrEmpty(test.ImagePath) ? "/img/scale_1200.jpg" : test.ImagePath)">
+                        <div class="card-img-overlay">
+                            <h4 style="margin-top: 210px;">@test.Name</h4>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <h1>На данный момент каталог тестов пуст. Возвращайтесь чуть позже.</h1>
+        }
+    </div>
+</div>

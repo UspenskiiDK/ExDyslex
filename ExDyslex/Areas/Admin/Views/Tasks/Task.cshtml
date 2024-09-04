@@ -1,0 +1,89 @@
+﻿@using Entities
+@using ExDyslex.Areas.Admin.Models
+
+@model Entities.Task
+
+@{
+    Layout = "Layout";
+    var selectList = ViewBag.selectList as List<SelectListItem> ?? new List<SelectListItem>();
+}
+
+<style>
+    .checkbox-menu li label {
+        display: block;
+        padding: 3px 10px;
+        clear: both;
+        font-weight: normal;
+        line-height: 1.42857143;
+        color: #333;
+        white-space: nowrap;
+        margin: 0;
+        transition: background-color .4s ease;
+    }
+
+    .checkbox-menu li input {
+        margin: 0px 5px;
+        top: 2px;
+        position: relative;
+    }
+
+    .checkbox-menu li.active label {
+        background-color: #cbcbff;
+        font-weight: bold;
+    }
+
+    .checkbox-menu li label:hover,
+    .checkbox-menu li label:focus {
+        background-color: #f5f5f5;
+    }
+
+    .checkbox-menu li.active label:hover,
+    .checkbox-menu li.active label:focus {
+        background-color: #b8b8ff;
+    }
+</style>
+
+
+
+<div class="container" style="margin-left: 200px;margin-right: 400px;padding-left: 0px;padding-right: 0px;">
+    <h1 style="margin-top: 34px;margin-left: 412px;margin-bottom: 32px;margin-right: 344px;">Редактирование задания</h1>
+    <form asp-action="Update" asp-controller="Tasks" asp-area="Admin" method="post">
+        <input type="hidden" asp-for="Id"/>
+
+        <label class="form-label">Текст вопроса</label>
+        <input asp-for="TaskQuestion" style="margin-bottom: 40px;" class="form-control" type="text">
+        
+        <label class="form-label">Ссылка на изображение</label>
+        <input asp-for="ImagePath" style="margin-bottom: 40px;" class="form-control" type="text">
+        
+        <label class="form-label">Тип задания</label>
+        <select asp-for="TaskCategory" style="margin-bottom: 40px;" class="form-select">
+            <optgroup label="Выберите...">
+                @foreach (var sel in selectList)
+                {
+                    <option value="@sel.Value" selected="">@sel.Text</option>
+                }
+            </optgroup>
+        </select>
+
+        <label class="form-label">Вариант ответа 1</label>
+        <input asp-for="AnswerOption1" style="margin-bottom: 40px;" class="form-control" type="text">
+
+        <label class="form-label">Вариант ответа 2</label>
+        <input asp-for="AnswerOption2" style="margin-bottom: 40px;" class="form-control" type="text">
+
+        <label class="form-label">Вариант ответа 3</label>
+        <input asp-for="AnswerOption3" style="margin-bottom: 40px;" class="form-control" type="text">
+
+        <label class="form-label">Вариант ответа 4</label>
+        <input asp-for="AnswerOption4" style="margin-bottom: 100px;" class="form-control" type="text">
+
+        <button id="subBtn" class="btn btn-primary bg-primary border rounded-pill" type="submit" style="margin-top: 24px;padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-left: 500px;margin-right: 180px;">Сохранить</button>
+    </form>
+</div>
+
+
+
+
+
+   

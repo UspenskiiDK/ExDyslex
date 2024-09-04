@@ -1,0 +1,110 @@
+﻿@using Entities
+@using ExDyslex.Areas.Admin.Models
+
+@model TestTasksViewModel
+
+@{
+    Layout = "Layout";
+    var tasks = ViewBag.Tasks as List<Entities.Task> ?? new List<Entities.Task>();
+    var existingTasksIds = ViewBag.ExistingTasksIds as List<int> ?? new List<int>();
+}
+
+<style>
+    .checkbox-menu li label {
+        display: block;
+        padding: 3px 10px;
+        clear: both;
+        font-weight: normal;
+        line-height: 1.42857143;
+        color: #333;
+        white-space: nowrap;
+        margin: 0;
+        transition: background-color .4s ease;
+    }
+
+    .checkbox-menu li input {
+        margin: 0px 5px;
+        top: 2px;
+        position: relative;
+    }
+
+    .checkbox-menu li.active label {
+        background-color: #cbcbff;
+        font-weight: bold;
+    }
+
+    .checkbox-menu li label:hover,
+    .checkbox-menu li label:focus {
+        background-color: #f5f5f5;
+    }
+
+    .checkbox-menu li.active label:hover,
+    .checkbox-menu li.active label:focus {
+        background-color: #b8b8ff;
+    }
+</style>
+
+<div class="container" style="margin-left: 100px;margin-right: 400px;padding-left: 0px;padding-right: 0px;">
+    <h1 style="margin-top: 34px;margin-right: 458px;margin-left: 412px;margin-bottom: 32px;">Редактирование теста</h1>
+    <form asp-action="Update" asp-controller="Tests" asp-area="Admin" method="post">
+        <input type="hidden" id="idsList" asp-for="TasksIds" />
+        <input type="hidden" asp-for="TestEntity.Id" />
+
+        <label class="form-label">Название</label>
+        <input class="form-control" asp-for="TestEntity.Name" style="margin-bottom:30px;" type="text" value="@Model.TestEntity.Name">
+        
+        <label class="form-label">Ссылка на изображение</label>
+        <input class="form-control" asp-for="TestEntity.ImagePath" style="margin-bottom:30px;" type="text" value="@Model.TestEntity.ImagePath">
+
+        <div class="dropdown" style="margin-bottom:100px;">
+            <button class="btn btn-default dropdown-toggle" type="button"
+                    id="dropdownMenu1" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true">
+                <i class="bi bi-book"></i>
+                <span class="caret">Выбрать задания</span>
+            </button>
+            <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
+                @if (tasks != null && tasks.Count > 0)
+                {
+                    foreach (var task in tasks)
+                    {
+                        <li>
+                            <label>
+                                <input type="checkbox" value="@task.Id" checked="@(existingTasksIds.Contains(task.Id))" />
+                                @task.TaskQuestion
+                            </label>
+                        </li>
+                    }
+                }              
+            </ul>
+        </div>
+
+        <button id="subBtn" class="btn btn-primary bg-primary border rounded-pill" type="submit" style="margin-top: 24px;padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-left: 500px;margin-right: 180px;">Сохранить</button>
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        $(".checkbox-menu").on("change", "input[type='checkbox']", function () {
+            $(this).closest("li").toggleClass("active", this.checked);
+        });
+    </script>
+    <script>
+        $('.allow-focus').on('click', function (e) {
+            e.stopPropagation();
+        });
+    </script>
+    <script>
+        $('#subBtn').on('click', function (e) {
+            var selectedIDs = [];
+            $('input[type=checkbox]:checked').each(function () {
+                selectedIDs.push($(this).val());
+            });
+
+            $("#idsList").val(selectedIDs);
+
+        });
+
+        
+    </script>
+}

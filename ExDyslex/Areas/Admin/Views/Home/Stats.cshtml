@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = "Layout";
+    var selectListTests = ViewBag.selectListTests as List<SelectListItem> ?? new List<SelectListItem>();
+    var selectListClients = ViewBag.selectListClients as List<SelectListItem> ?? new List<SelectListItem>();
+    var idd = ViewBag.idd as int?;
+}
+
+<div class="container" style="margin-left: 100px;margin-right: 400px;padding-left: 0px;padding-right: 0px;">
+    <h1 style="margin-top: 34px;margin-left: 412px;margin-bottom: 32px;margin-right: 344px;">Статистика ученика</h1>
+
+    <label class="form-label">Выберите тест</label>
+    <select class="form-select">
+        <optgroup label="Выберите...">
+            @foreach (var test in selectListTests)
+            {
+                <option value="@test.Value">@test.Text</option>
+            }
+        </optgroup>
+    </select>
+    
+    <label class="form-label">Выберите учащегося</label>
+    <select id="student" class="form-select" style="margin-bottom: 72px;">
+        <optgroup label="Выберите...">
+            @foreach (var client in selectListClients)
+            {
+                <option value="@client.Value">@client.Text</option>
+            }
+        </optgroup>
+    </select>
+
+    <button id="subBtn" class="btn btn-primary bg-primary border rounded-pill" type="button" style="margin-top: 24px;padding-right: 54px;padding-left: 48px;background-color: #727CD6 !important;margin-left: 198px;margin-right: 180px; margin-bottom: 50px;">Найти</button>
+    
+        
+    
+    <input class="form-control" type="text" value="Футбол">
+
+    <label class="form-label">Ответ на задание 2</label>
+    <input class="form-control" type="text" value="Слон">
+
+    <label class="form-label">Ответ на задание 3</label>
+    <input class="form-control" type="text" value="Спорт">
+
+    <label class="form-label">Ответ на задание 4</label>
+    <input class="form-control" type="text" value="Маугли">
+
+    <label class="form-label">Ответ на задание 5</label>
+    <input class="form-control" type="text" value="Не знаю">
+
+    <label class="form-label">Ответ на задание 6</label>
+    <input class="form-control" type="text" value="Красный">
+
+    <label class="form-label">Ответ на задание 7</label>
+    <input class="form-control" type="text" value="Не знаю">
+        
+
+</div>
+
+@section Scripts{
+    <script>
+        $('#subBtn').on('click', function (e) {
+            var id = $('#student').find(":selected").val();
+            $.ajax({
+                url: '/Admin/Home/GetIdClient',
+                type: "POST",
+                data: JSON.stringify(id),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            });
+        });
+    </script>
+}
+
+
